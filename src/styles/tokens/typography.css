@@ -8,11 +8,11 @@
   /* ---------------------------------------------------------------------------
      Font Families
      --------------------------------------------------------------------------- */
-  --font-sans: 'Manrope', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+  --font-sans: 'Manrope Variable', 'Manrope', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-display: 'Outfit', var(--font-sans);
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco,
+  --font-display: 'Outfit Variable', 'Outfit', var(--font-sans);
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, 'Liberation Mono', 'Courier New', monospace;
 
   /* ---------------------------------------------------------------------------

@@ -49,13 +49,12 @@ export default defineConfig({
       styleDirective: {
         resources: [
           "'self'",
-          'https://fonts.googleapis.com',
         ],
       },
       directives: [
-        "font-src 'self' https://fonts.gstatic.com",
+        "font-src 'self'",
         "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com",
-        "img-src 'self' data: https://www.googletagmanager.com",
+        "img-src 'self' data: https://www.googletagmanager.com https://i.pravatar.cc",
       ],
     },
   },

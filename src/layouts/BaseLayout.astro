@@ -49,18 +49,7 @@ if (includeOrgSchema) {
     <meta name="generator" content={Astro.generator} />
 
     <!-- Velocity Fonts: Outfit (display), Manrope (body), JetBrains Mono (code) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Non-render-blocking font loading -->
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    </noscript>
+    <!-- Self-hosted via Fontsource — no external requests, CSP-safe -->
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href={siteConfig.branding.favicon.svg} />
