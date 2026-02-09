@@ -1,8 +1,8 @@
 import type { APIRoute } from 'astro';
-import { z } from 'zod';
+import { z } from 'astro/zod';
 
 const newsletterSchema = z.object({
-  email: z.string().email('Please enter a valid email address'),
+  email: z.email('Please enter a valid email address'),
   honeypot: z.string().max(0).optional(), // Honeypot field for spam protection
 });
 
@@ -27,7 +27,7 @@ export const POST: APIRoute = async ({ request }) => {
       return new Response(
         JSON.stringify({
           success: false,
-          error: result.error.errors[0]?.message || 'Please enter a valid email address',
+          error: result.error.issues[0]?.message || 'Please enter a valid email address',
         }),
         {
           status: 400,

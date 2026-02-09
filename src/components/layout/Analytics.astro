@@ -9,9 +9,10 @@
  * - PUBLIC_GA_MEASUREMENT_ID: Google Analytics 4 Measurement ID (e.g., G-XXXXXXXXXX)
  * - PUBLIC_GTM_ID: Google Tag Manager Container ID (e.g., GTM-XXXXXXX)
  */
+import { PUBLIC_GA_MEASUREMENT_ID, PUBLIC_GTM_ID } from 'astro:env/client';
 
-const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
-const gtmId = import.meta.env.PUBLIC_GTM_ID;
+const gaId = PUBLIC_GA_MEASUREMENT_ID;
+const gtmId = PUBLIC_GTM_ID;
 ---
 
 {/* Google Tag Manager - loads first if configured */}

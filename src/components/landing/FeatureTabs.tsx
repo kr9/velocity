@@ -73,7 +73,6 @@ const codeExamples: Record<
     lang: 'astro',
     code: `---
 // src/components/seo/SEO.astro
-import { SEO as AstroSEO } from 'astro-seo';
 import siteConfig from '@/config/site.config';
 
 interface Props {
@@ -89,12 +88,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImage = image || \`/og/\${Astro.url.pathname}.png\`;
 ---
 
-<AstroSEO
-  title={title}
-  description={description}
-  canonical={canonicalURL.toString()}
-  openGraph={{ basic: { title, image: ogImage } }}
-/>`,
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL.toString()} />
+<meta property="og:title" content={title} />
+<meta property="og:image" content={ogImage} />`,
     filename: 'src/components/seo/SEO.astro',
   },
   perf: {

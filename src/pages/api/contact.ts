@@ -1,9 +1,9 @@
 import type { APIRoute } from 'astro';
-import { z } from 'zod';
+import { z } from 'astro/zod';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters').max(100),
-  email: z.string().email('Please enter a valid email address'),
+  email: z.email('Please enter a valid email address'),
   subject: z.string().max(200).optional(),
   message: z.string().min(10, 'Message must be at least 10 characters').max(5000),
   honeypot: z.string().max(0), // Anti-spam: must be empty
@@ -26,7 +26,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     if (!result.success) {
       const fieldErrors: Record<string, string[]> = {};
-      for (const error of result.error.errors) {
+      for (const error of result.error.issues) {
         const field = error.path[0] as string;
         if (!fieldErrors[field]) {
           fieldErrors[field] = [];

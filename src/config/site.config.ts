@@ -1,3 +1,5 @@
+import { SITE_URL, GOOGLE_SITE_VERIFICATION, BING_SITE_VERIFICATION } from 'astro:env/server';
+
 export interface SiteConfig {
   name: string;
   description: string;
@@ -49,7 +51,7 @@ export interface SiteConfig {
 const siteConfig: SiteConfig = {
   name: 'Velocity',
   description: 'A modern website built with Astro and Tailwind CSS',
-  url: import.meta.env.SITE_URL || 'https://example.com',
+  url: SITE_URL || 'https://example.com',
   ogImage: '/og-default.png',
   author: 'Southwell Media',
   // Demo contact info - replace with your actual business details
@@ -71,8 +73,8 @@ const siteConfig: SiteConfig = {
   //   creator: '@yourhandle',
   // },
   verification: {
-    google: import.meta.env.GOOGLE_SITE_VERIFICATION,
-    bing: import.meta.env.BING_SITE_VERIFICATION,
+    google: GOOGLE_SITE_VERIFICATION,
+    bing: BING_SITE_VERIFICATION,
   },
   // Branding: Logo files live in src/assets/branding/
   // Replace the SVG files there with your own branding
