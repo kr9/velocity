@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Palette, Search, Zap, LayoutGrid, Globe, Copy, Check, Newspaper } from 'lucide-react';
-import { VerticalTabs, type VerticalTab } from '@/components/ui/VerticalTabs';
+import { VerticalTabs, type VerticalTab } from '@/components/ui/overlay/VerticalTabs';
 
 interface TabContent {
   title: string;

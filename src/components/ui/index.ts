@@ -1,43 +1,40 @@
 /**
  * UI Component Exports
  *
- * This file exports React components for use with Astro's client:* directives.
- * React components are needed for interactive client-side functionality.
+ * Organized by category for better discoverability.
+ * Each category contains related components grouped by function.
  *
- * Astro components (*.astro) are imported directly from their files:
- * - Badge, Alert, Avatar, AvatarGroup, Skeleton, Icon, Logo, CTA, NpmCopyButton
- * - Separator, Accordion, Progress, Table, Pagination, SocialProof
- * - Tabs, Dropdown, Dialog, Tooltip, CodeBlock
- * - Button.astro (server-side), VerticalTabs.astro (server-side)
+ * Categories:
+ * - form: Button, Input, Textarea, Select, Checkbox, Radio, Switch
+ * - data-display: Card, Badge, Avatar, AvatarGroup, Table, Pagination, Progress, Skeleton
+ * - feedback: Alert, Toast, Tooltip
+ * - overlay: Dialog, Dropdown, Tabs, VerticalTabs, Accordion
+ * - layout: Separator
+ * - primitives: Icon
+ * - content: CodeBlock
+ * - marketing: Logo, CTA, NpmCopyButton, SocialProof, TerminalDemo
  */
 
-// React components for client-side interactivity
-export { Button } from './Button';
-export { Input } from './Input';
-export { Textarea } from './Textarea';
-export { Select } from './Select';
-export { Checkbox } from './Checkbox';
-export { Radio } from './Radio';
-export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './Card';
-export { VerticalTabs, type VerticalTab } from './VerticalTabs';
-export { Switch } from './Switch';
-export { ToastProvider, useToast } from './Toast';
+// Form Components
+export * from './form';
 
-// Shared variant definitions (importable by users for extension)
-export { buttonVariants, type ButtonVariants } from './button.variants';
-export { badgeVariants, type BadgeVariants } from './badge.variants';
-export { inputVariants, inputSizeConfig, type InputVariants } from './input.variants';
-export { cardVariants, type CardVariants } from './card.variants';
-export { alertVariants, alertIconColors, alertAccentColors, type AlertVariants } from './alert.variants';
-export { selectVariants, type SelectVariants } from './select.variants';
-export { textareaVariants, type TextareaVariants } from './textarea.variants';
-export { checkboxBoxVariants, type CheckboxVariants } from './checkbox.variants';
-export { radioCircleVariants, radioCardVariants, type RadioVariants } from './radio.variants';
-export { skeletonVariants, type SkeletonVariants } from './skeleton.variants';
-export { avatarVariants, type AvatarVariants } from './avatar.variants';
-export { separatorVariants, type SeparatorVariants } from './separator.variants';
-export { switchTrackVariants, switchThumbVariants, type SwitchVariants } from './switch.variants';
-export { accordionItemVariants, accordionTriggerVariants, type AccordionVariants, type AccordionTriggerVariants } from './accordion.variants';
-export { toastVariants, toastIconColors, type ToastVariants } from './toast.variants';
-export { progressTrackVariants, progressBarVariants, type ProgressVariants } from './progress.variants';
-export { paginationItemVariants, type PaginationVariants } from './pagination.variants';
+// Data Display Components
+export * from './data-display';
+
+// Feedback Components
+export * from './feedback';
+
+// Overlay Components
+export * from './overlay';
+
+// Layout Components
+export * from './layout';
+
+// Primitive Components
+export * from './primitives';
+
+// Content Components
+export * from './content';
+
+// Marketing Components
+export * from './marketing';

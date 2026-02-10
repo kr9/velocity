@@ -1,39 +1,47 @@
 ---
 import LandingLayout from '@/layouts/LandingLayout.astro';
-import Icon from '@/components/ui/Icon.astro';
-import Button from '@/components/ui/Button.astro';
-import Badge from '@/components/ui/Badge.astro';
-import Alert from '@/components/ui/Alert.astro';
-import Tabs from '@/components/ui/Tabs.astro';
-import VerticalTabs from '@/components/ui/VerticalTabs.astro';
-import Dropdown from '@/components/ui/Dropdown.astro';
-import Dialog from '@/components/ui/Dialog.astro';
-import Tooltip from '@/components/ui/Tooltip.astro';
-import Avatar from '@/components/ui/Avatar.astro';
-import Skeleton from '@/components/ui/Skeleton.astro';
-import Input from '@/components/ui/Input.astro';
-import Textarea from '@/components/ui/Textarea.astro';
-import Select from '@/components/ui/Select.astro';
-import Checkbox from '@/components/ui/Checkbox.astro';
-import Radio from '@/components/ui/Radio.astro';
-import Card from '@/components/ui/Card.astro';
-import CTA from '@/components/ui/CTA.astro';
+// Form Components
+import Button from '@/components/ui/form/Button/Button.astro';
+import Input from '@/components/ui/form/Input/Input.astro';
+import Textarea from '@/components/ui/form/Textarea/Textarea.astro';
+import Select from '@/components/ui/form/Select/Select.astro';
+import Checkbox from '@/components/ui/form/Checkbox/Checkbox.astro';
+import Radio from '@/components/ui/form/Radio/Radio.astro';
+import Switch from '@/components/ui/form/Switch/Switch.astro';
+// Data Display Components
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+import Avatar from '@/components/ui/data-display/Avatar/Avatar.astro';
+import AvatarGroup from '@/components/ui/data-display/AvatarGroup/AvatarGroup.astro';
+import Table from '@/components/ui/data-display/Table/Table.astro';
+import Pagination from '@/components/ui/data-display/Pagination/Pagination.astro';
+import Progress from '@/components/ui/data-display/Progress/Progress.astro';
+import Skeleton from '@/components/ui/data-display/Skeleton/Skeleton.astro';
+// Feedback Components
+import Alert from '@/components/ui/feedback/Alert/Alert.astro';
+import { ToastDemo } from '@/components/ui/feedback/Toast';
+import Tooltip from '@/components/ui/feedback/Tooltip/Tooltip.astro';
+// Overlay Components
+import Dialog from '@/components/ui/overlay/Dialog/Dialog.astro';
+import Dropdown from '@/components/ui/overlay/Dropdown/Dropdown.astro';
+import Tabs from '@/components/ui/overlay/Tabs/Tabs.astro';
+import VerticalTabs from '@/components/ui/overlay/VerticalTabs/VerticalTabs.astro';
+import Accordion from '@/components/ui/overlay/Accordion/Accordion.astro';
+// Layout Components
+import Separator from '@/components/ui/layout/Separator/Separator.astro';
+// Primitives
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+// Marketing Components
+import CTA from '@/components/ui/marketing/CTA/CTA.astro';
+import SocialProof from '@/components/ui/marketing/SocialProof/SocialProof.astro';
+// Other Components
 import { Hero } from '@/components/hero';
-import SocialProof from '@/components/ui/SocialProof.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
-import Separator from '@/components/ui/Separator.astro';
-import Switch from '@/components/ui/Switch.astro';
-import Accordion from '@/components/ui/Accordion.astro';
-import Progress from '@/components/ui/Progress.astro';
-import Table from '@/components/ui/Table.astro';
-import Pagination from '@/components/ui/Pagination.astro';
-import AvatarGroup from '@/components/ui/AvatarGroup.astro';
 import SearchInput from '@/components/patterns/SearchInput.astro';
 import PasswordInput from '@/components/patterns/PasswordInput.astro';
 import StatCard from '@/components/patterns/StatCard.astro';
 import EmptyState from '@/components/patterns/EmptyState.astro';
-import { ToastDemo } from '@/components/ui/ToastDemo';
 
 // Component categories for navigation
 const categories = [

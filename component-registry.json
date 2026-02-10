@@ -4,7 +4,41 @@
   "categories": {
     "ui": {
       "name": "UI Components",
-      "description": "Core building blocks - buttons, forms, cards, dialogs"
+      "description": "Core building blocks - buttons, forms, cards, dialogs",
+      "subcategories": {
+        "form": {
+          "name": "Form",
+          "description": "Form input components - buttons, inputs, selects"
+        },
+        "data-display": {
+          "name": "Data Display",
+          "description": "Components for displaying data - cards, badges, tables"
+        },
+        "feedback": {
+          "name": "Feedback",
+          "description": "User feedback components - alerts, toasts, tooltips"
+        },
+        "overlay": {
+          "name": "Overlay",
+          "description": "Overlay components - dialogs, dropdowns, tabs"
+        },
+        "layout": {
+          "name": "Layout",
+          "description": "Layout components - separators, dividers"
+        },
+        "primitives": {
+          "name": "Primitives",
+          "description": "Fundamental components used across the system"
+        },
+        "content": {
+          "name": "Content",
+          "description": "Content display components"
+        },
+        "marketing": {
+          "name": "Marketing",
+          "description": "Marketing and landing page components"
+        }
+      }
     },
     "layout": {
       "name": "Layout Components",
@@ -31,24 +65,12 @@
     "button": {
       "name": "Button",
       "category": "ui",
+      "subcategory": "form",
       "files": [
-        "src/components/ui/Button.astro",
-        "src/components/ui/Button.tsx",
-        "src/components/ui/button.variants.ts"
-      ],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": []
-      },
-      "premium": false
-    },
-    "card": {
-      "name": "Card",
-      "category": "ui",
-      "files": [
-        "src/components/ui/Card.astro",
-        "src/components/ui/Card.tsx",
-        "src/components/ui/card.variants.ts"
+        "src/components/ui/form/Button/Button.astro",
+        "src/components/ui/form/Button/Button.tsx",
+        "src/components/ui/form/Button/button.variants.ts",
+        "src/components/ui/form/Button/index.ts"
       ],
       "dependencies": {
         "utilities": ["cn"],
@@ -59,108 +81,12 @@
     "input": {
       "name": "Input",
       "category": "ui",
+      "subcategory": "form",
       "files": [
-        "src/components/ui/Input.astro",
-        "src/components/ui/Input.tsx",
-        "src/components/ui/input.variants.ts"
-      ],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": []
-      },
-      "premium": false
-    },
-    "icon": {
-      "name": "Icon",
-      "category": "ui",
-      "files": ["src/components/ui/Icon.astro"],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": []
-      },
-      "premium": false
-    },
-    "badge": {
-      "name": "Badge",
-      "category": "ui",
-      "files": [
-        "src/components/ui/Badge.astro",
-        "src/components/ui/badge.variants.ts"
-      ],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": []
-      },
-      "premium": false
-    },
-    "alert": {
-      "name": "Alert",
-      "category": "ui",
-      "files": [
-        "src/components/ui/Alert.astro",
-        "src/components/ui/alert.variants.ts"
-      ],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": []
-      },
-      "premium": false
-    },
-    "dialog": {
-      "name": "Dialog",
-      "category": "ui",
-      "files": ["src/components/ui/Dialog.astro"],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": []
-      },
-      "premium": false
-    },
-    "tabs": {
-      "name": "Tabs",
-      "category": "ui",
-      "files": ["src/components/ui/Tabs.astro"],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": []
-      },
-      "premium": false
-    },
-    "select": {
-      "name": "Select",
-      "category": "ui",
-      "files": [
-        "src/components/ui/Select.astro",
-        "src/components/ui/Select.tsx",
-        "src/components/ui/select.variants.ts"
-      ],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": []
-      },
-      "premium": false
-    },
-    "checkbox": {
-      "name": "Checkbox",
-      "category": "ui",
-      "files": [
-        "src/components/ui/Checkbox.astro",
-        "src/components/ui/Checkbox.tsx",
-        "src/components/ui/checkbox.variants.ts"
-      ],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": []
-      },
-      "premium": false
-    },
-    "radio": {
-      "name": "Radio",
-      "category": "ui",
-      "files": [
-        "src/components/ui/Radio.astro",
-        "src/components/ui/Radio.tsx",
-        "src/components/ui/radio.variants.ts"
+        "src/components/ui/form/Input/Input.astro",
+        "src/components/ui/form/Input/Input.tsx",
+        "src/components/ui/form/Input/input.variants.ts",
+        "src/components/ui/form/Input/index.ts"
       ],
       "dependencies": {
         "utilities": ["cn"],
@@ -171,10 +97,12 @@
     "textarea": {
       "name": "Textarea",
       "category": "ui",
+      "subcategory": "form",
       "files": [
-        "src/components/ui/Textarea.astro",
-        "src/components/ui/Textarea.tsx",
-        "src/components/ui/textarea.variants.ts"
+        "src/components/ui/form/Textarea/Textarea.astro",
+        "src/components/ui/form/Textarea/Textarea.tsx",
+        "src/components/ui/form/Textarea/textarea.variants.ts",
+        "src/components/ui/form/Textarea/index.ts"
       ],
       "dependencies": {
         "utilities": ["cn"],
@@ -182,32 +110,15 @@
       },
       "premium": false
     },
-    "tooltip": {
-      "name": "Tooltip",
+    "select": {
+      "name": "Select",
       "category": "ui",
-      "files": ["src/components/ui/Tooltip.astro"],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": []
-      },
-      "premium": false
-    },
-    "dropdown": {
-      "name": "Dropdown",
-      "category": "ui",
-      "files": ["src/components/ui/Dropdown.astro"],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": []
-      },
-      "premium": false
-    },
-    "skeleton": {
-      "name": "Skeleton",
-      "category": "ui",
+      "subcategory": "form",
       "files": [
-        "src/components/ui/Skeleton.astro",
-        "src/components/ui/skeleton.variants.ts"
+        "src/components/ui/form/Select/Select.astro",
+        "src/components/ui/form/Select/Select.tsx",
+        "src/components/ui/form/Select/select.variants.ts",
+        "src/components/ui/form/Select/index.ts"
       ],
       "dependencies": {
         "utilities": ["cn"],
@@ -215,42 +126,15 @@
       },
       "premium": false
     },
-    "logo": {
-      "name": "Logo",
+    "checkbox": {
+      "name": "Checkbox",
       "category": "ui",
-      "files": ["src/components/ui/Logo.astro"],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": []
-      },
-      "premium": false
-    },
-    "code-block": {
-      "name": "CodeBlock",
-      "category": "ui",
-      "files": ["src/components/ui/CodeBlock.astro"],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": []
-      },
-      "premium": false
-    },
-    "social-proof": {
-      "name": "SocialProof",
-      "category": "ui",
-      "files": ["src/components/ui/SocialProof.astro"],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": []
-      },
-      "premium": false
-    },
-    "avatar": {
-      "name": "Avatar",
-      "category": "ui",
+      "subcategory": "form",
       "files": [
-        "src/components/ui/Avatar.astro",
-        "src/components/ui/avatar.variants.ts"
+        "src/components/ui/form/Checkbox/Checkbox.astro",
+        "src/components/ui/form/Checkbox/Checkbox.tsx",
+        "src/components/ui/form/Checkbox/checkbox.variants.ts",
+        "src/components/ui/form/Checkbox/index.ts"
       ],
       "dependencies": {
         "utilities": ["cn"],
@@ -258,84 +142,15 @@
       },
       "premium": false
     },
-    "terminal-demo": {
-      "name": "TerminalDemo",
+    "radio": {
+      "name": "Radio",
       "category": "ui",
-      "files": ["src/components/ui/TerminalDemo.tsx"],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": []
-      },
-      "premium": false
-    },
-    "vertical-tabs": {
-      "name": "VerticalTabs",
-      "category": "ui",
+      "subcategory": "form",
       "files": [
-        "src/components/ui/VerticalTabs.astro",
-        "src/components/ui/VerticalTabs.tsx"
-      ],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": []
-      },
-      "premium": false
-    },
-    "accordion": {
-      "name": "Accordion",
-      "category": "ui",
-      "files": [
-        "src/components/ui/Accordion.astro",
-        "src/components/ui/accordion.variants.ts"
-      ],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": ["icon"]
-      },
-      "premium": false
-    },
-    "avatar-group": {
-      "name": "AvatarGroup",
-      "category": "ui",
-      "files": ["src/components/ui/AvatarGroup.astro"],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": ["avatar"]
-      },
-      "premium": false
-    },
-    "pagination": {
-      "name": "Pagination",
-      "category": "ui",
-      "files": [
-        "src/components/ui/Pagination.astro",
-        "src/components/ui/pagination.variants.ts"
-      ],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": ["icon"]
-      },
-      "premium": false
-    },
-    "progress": {
-      "name": "Progress",
-      "category": "ui",
-      "files": [
-        "src/components/ui/Progress.astro",
-        "src/components/ui/progress.variants.ts"
-      ],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": []
-      },
-      "premium": false
-    },
-    "separator": {
-      "name": "Separator",
-      "category": "ui",
-      "files": [
-        "src/components/ui/Separator.astro",
-        "src/components/ui/separator.variants.ts"
+        "src/components/ui/form/Radio/Radio.astro",
+        "src/components/ui/form/Radio/Radio.tsx",
+        "src/components/ui/form/Radio/radio.variants.ts",
+        "src/components/ui/form/Radio/index.ts"
       ],
       "dependencies": {
         "utilities": ["cn"],
@@ -346,10 +161,12 @@
     "switch": {
       "name": "Switch",
       "category": "ui",
+      "subcategory": "form",
       "files": [
-        "src/components/ui/Switch.astro",
-        "src/components/ui/Switch.tsx",
-        "src/components/ui/switch.variants.ts"
+        "src/components/ui/form/Switch/Switch.astro",
+        "src/components/ui/form/Switch/Switch.tsx",
+        "src/components/ui/form/Switch/switch.variants.ts",
+        "src/components/ui/form/Switch/index.ts"
       ],
       "dependencies": {
         "utilities": ["cn"],
@@ -357,10 +174,134 @@
       },
       "premium": false
     },
+    "card": {
+      "name": "Card",
+      "category": "ui",
+      "subcategory": "data-display",
+      "files": [
+        "src/components/ui/data-display/Card/Card.astro",
+        "src/components/ui/data-display/Card/Card.tsx",
+        "src/components/ui/data-display/Card/card.variants.ts",
+        "src/components/ui/data-display/Card/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "badge": {
+      "name": "Badge",
+      "category": "ui",
+      "subcategory": "data-display",
+      "files": [
+        "src/components/ui/data-display/Badge/Badge.astro",
+        "src/components/ui/data-display/Badge/badge.variants.ts",
+        "src/components/ui/data-display/Badge/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "avatar": {
+      "name": "Avatar",
+      "category": "ui",
+      "subcategory": "data-display",
+      "files": [
+        "src/components/ui/data-display/Avatar/Avatar.astro",
+        "src/components/ui/data-display/Avatar/avatar.variants.ts",
+        "src/components/ui/data-display/Avatar/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "avatar-group": {
+      "name": "AvatarGroup",
+      "category": "ui",
+      "subcategory": "data-display",
+      "files": [
+        "src/components/ui/data-display/AvatarGroup/AvatarGroup.astro",
+        "src/components/ui/data-display/AvatarGroup/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": ["avatar"]
+      },
+      "premium": false
+    },
     "table": {
       "name": "Table",
       "category": "ui",
-      "files": ["src/components/ui/Table.astro"],
+      "subcategory": "data-display",
+      "files": [
+        "src/components/ui/data-display/Table/Table.astro",
+        "src/components/ui/data-display/Table/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "pagination": {
+      "name": "Pagination",
+      "category": "ui",
+      "subcategory": "data-display",
+      "files": [
+        "src/components/ui/data-display/Pagination/Pagination.astro",
+        "src/components/ui/data-display/Pagination/pagination.variants.ts",
+        "src/components/ui/data-display/Pagination/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": ["icon"]
+      },
+      "premium": false
+    },
+    "progress": {
+      "name": "Progress",
+      "category": "ui",
+      "subcategory": "data-display",
+      "files": [
+        "src/components/ui/data-display/Progress/Progress.astro",
+        "src/components/ui/data-display/Progress/progress.variants.ts",
+        "src/components/ui/data-display/Progress/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "skeleton": {
+      "name": "Skeleton",
+      "category": "ui",
+      "subcategory": "data-display",
+      "files": [
+        "src/components/ui/data-display/Skeleton/Skeleton.astro",
+        "src/components/ui/data-display/Skeleton/skeleton.variants.ts",
+        "src/components/ui/data-display/Skeleton/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "alert": {
+      "name": "Alert",
+      "category": "ui",
+      "subcategory": "feedback",
+      "files": [
+        "src/components/ui/feedback/Alert/Alert.astro",
+        "src/components/ui/feedback/Alert/alert.variants.ts",
+        "src/components/ui/feedback/Alert/index.ts"
+      ],
       "dependencies": {
         "utilities": ["cn"],
         "components": []
@@ -370,9 +311,12 @@
     "toast": {
       "name": "Toast",
       "category": "ui",
+      "subcategory": "feedback",
       "files": [
-        "src/components/ui/Toast.tsx",
-        "src/components/ui/toast.variants.ts"
+        "src/components/ui/feedback/Toast/Toast.tsx",
+        "src/components/ui/feedback/Toast/ToastDemo.tsx",
+        "src/components/ui/feedback/Toast/toast.variants.ts",
+        "src/components/ui/feedback/Toast/index.ts"
       ],
       "dependencies": {
         "utilities": ["cn"],
@@ -380,23 +324,202 @@
       },
       "premium": false
     },
-    "npm-copy-button": {
-      "name": "NpmCopyButton",
+    "tooltip": {
+      "name": "Tooltip",
       "category": "ui",
-      "files": ["src/components/ui/NpmCopyButton.astro"],
+      "subcategory": "feedback",
+      "files": [
+        "src/components/ui/feedback/Tooltip/Tooltip.astro",
+        "src/components/ui/feedback/Tooltip/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "dialog": {
+      "name": "Dialog",
+      "category": "ui",
+      "subcategory": "overlay",
+      "files": [
+        "src/components/ui/overlay/Dialog/Dialog.astro",
+        "src/components/ui/overlay/Dialog/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "dropdown": {
+      "name": "Dropdown",
+      "category": "ui",
+      "subcategory": "overlay",
+      "files": [
+        "src/components/ui/overlay/Dropdown/Dropdown.astro",
+        "src/components/ui/overlay/Dropdown/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "tabs": {
+      "name": "Tabs",
+      "category": "ui",
+      "subcategory": "overlay",
+      "files": [
+        "src/components/ui/overlay/Tabs/Tabs.astro",
+        "src/components/ui/overlay/Tabs/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "vertical-tabs": {
+      "name": "VerticalTabs",
+      "category": "ui",
+      "subcategory": "overlay",
+      "files": [
+        "src/components/ui/overlay/VerticalTabs/VerticalTabs.astro",
+        "src/components/ui/overlay/VerticalTabs/VerticalTabs.tsx",
+        "src/components/ui/overlay/VerticalTabs/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "accordion": {
+      "name": "Accordion",
+      "category": "ui",
+      "subcategory": "overlay",
+      "files": [
+        "src/components/ui/overlay/Accordion/Accordion.astro",
+        "src/components/ui/overlay/Accordion/accordion.variants.ts",
+        "src/components/ui/overlay/Accordion/index.ts"
+      ],
       "dependencies": {
         "utilities": ["cn"],
         "components": ["icon"]
       },
       "premium": false
     },
+    "separator": {
+      "name": "Separator",
+      "category": "ui",
+      "subcategory": "layout",
+      "files": [
+        "src/components/ui/layout/Separator/Separator.astro",
+        "src/components/ui/layout/Separator/separator.variants.ts",
+        "src/components/ui/layout/Separator/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "icon": {
+      "name": "Icon",
+      "category": "ui",
+      "subcategory": "primitives",
+      "files": [
+        "src/components/ui/primitives/Icon/Icon.astro",
+        "src/components/ui/primitives/Icon/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "code-block": {
+      "name": "CodeBlock",
+      "category": "ui",
+      "subcategory": "content",
+      "files": [
+        "src/components/ui/content/CodeBlock/CodeBlock.astro",
+        "src/components/ui/content/CodeBlock/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "logo": {
+      "name": "Logo",
+      "category": "ui",
+      "subcategory": "marketing",
+      "files": [
+        "src/components/ui/marketing/Logo/Logo.astro",
+        "src/components/ui/marketing/Logo/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
     "cta": {
       "name": "CTA",
       "category": "ui",
-      "files": ["src/components/ui/CTA.astro"],
+      "subcategory": "marketing",
+      "files": [
+        "src/components/ui/marketing/CTA/CTA.astro",
+        "src/components/ui/marketing/CTA/index.ts"
+      ],
       "dependencies": {
         "utilities": ["cn"],
         "components": ["logo"]
+      },
+      "premium": false
+    },
+    "npm-copy-button": {
+      "name": "NpmCopyButton",
+      "category": "ui",
+      "subcategory": "marketing",
+      "files": [
+        "src/components/ui/marketing/NpmCopyButton/NpmCopyButton.astro",
+        "src/components/ui/marketing/NpmCopyButton/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": ["icon"]
+      },
+      "premium": false
+    },
+    "social-proof": {
+      "name": "SocialProof",
+      "category": "ui",
+      "subcategory": "marketing",
+      "files": [
+        "src/components/ui/marketing/SocialProof/SocialProof.astro",
+        "src/components/ui/marketing/SocialProof/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "terminal-demo": {
+      "name": "TerminalDemo",
+      "category": "ui",
+      "subcategory": "marketing",
+      "files": [
+        "src/components/ui/marketing/TerminalDemo/TerminalDemo.tsx",
+        "src/components/ui/marketing/TerminalDemo/index.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
       },
       "premium": false
     },
