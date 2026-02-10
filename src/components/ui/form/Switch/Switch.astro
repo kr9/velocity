@@ -65,6 +65,7 @@ const thumbSizes = {
       value={value}
       role="switch"
       aria-checked={checked ? 'true' : 'false'}
+      aria-describedby={description ? `${switchId}-description` : undefined}
     />
     <!-- Track -->
     <div
@@ -96,7 +97,7 @@ const thumbSizes = {
         </label>
       )}
       {description && (
-        <p class="text-xs text-foreground-subtle leading-normal">{description}</p>
+        <p id={`${switchId}-description`} class="text-xs text-foreground-subtle leading-normal">{description}</p>
       )}
     </div>
   )}

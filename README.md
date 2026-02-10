@@ -17,7 +17,7 @@
 
 ## Overview
 
-Velocity accelerates Astro project delivery with a comprehensive foundation that includes a design token system, 57 components across 7 categories, SEO optimization, dynamic OG image generation, and content management — built on Astro 6 (beta) and Tailwind CSS v4.
+Velocity accelerates Astro project delivery with a comprehensive foundation that includes a design token system, 57 components across 7 categories, SEO, dynamic OG image generation, and content management — built on Astro 6 (beta) and Tailwind CSS v4.
 
 ### Key Features
 

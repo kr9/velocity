@@ -55,6 +55,7 @@ export function Switch({
         role="switch"
         id={switchId}
         aria-checked={isChecked}
+        aria-describedby={description ? `${switchId}-description` : undefined}
         disabled={disabled}
         onClick={handleClick}
         className={cn(switchTrackVariants({ size, checked: isChecked }))}
@@ -78,7 +79,7 @@ export function Switch({
             </label>
           )}
           {description && (
-            <p className="text-xs text-foreground-subtle leading-normal">{description}</p>
+            <p id={`${switchId}-description`} className="text-xs text-foreground-subtle leading-normal">{description}</p>
           )}
         </div>
       )}

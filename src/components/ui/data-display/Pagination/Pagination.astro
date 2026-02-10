@@ -29,7 +29,19 @@ const {
   class: className,
 } = Astro.props;
 
-// Calculate visible page range
+/**
+ * Build the array of page numbers and ellipsis markers to render.
+ *
+ * @param current - The 1-indexed active page.
+ * @param total   - Total number of pages.
+ * @param max     - Size of the central sliding window. When `total <= max`,
+ *                  every page is returned directly. Otherwise a window of
+ *                  `max` pages is centered around `current`, and first/last
+ *                  pages plus `'...'` ellipsis markers are added outside the
+ *                  window as needed — so the returned array can contain more
+ *                  than `max` entries.
+ * @returns An array of page numbers and `'...'` separators.
+ */
 function getPageRange(current: number, total: number, max: number): (number | '...')[] {
   if (total <= max) {
     return Array.from({ length: total }, (_, i) => i + 1);
@@ -85,8 +97,8 @@ const nextUrl = currentPage < totalPages ? `${baseUrl}${currentPage + 1}` : unde
   {/* Page Numbers */}
   {pages.map((page) =>
     page === '...' ? (
-      <span class={cn(paginationItemVariants({ variant: 'default', size }), 'cursor-default hover:bg-transparent')}>
-        ...
+      <span class={cn(paginationItemVariants({ variant: 'default', size }), 'cursor-default hover:bg-transparent')} role="separator" aria-label="More pages">
+        <span aria-hidden="true">...</span>
       </span>
     ) : page === currentPage ? (
       <span

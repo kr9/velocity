@@ -21,7 +21,6 @@ export const accordionTriggerVariants = cva(
     'font-medium text-foreground',
     'transition-colors hover:text-foreground-secondary',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:rounded-sm',
-    '[&[open]>summary>.accordion-icon]:rotate-180',
   ],
   {
     variants: {

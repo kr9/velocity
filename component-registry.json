@@ -313,6 +313,7 @@
       "category": "ui",
       "subcategory": "feedback",
       "files": [
+        "src/components/ui/feedback/Toast/Toast.astro",
         "src/components/ui/feedback/Toast/Toast.tsx",
         "src/components/ui/feedback/Toast/ToastDemo.tsx",
         "src/components/ui/feedback/Toast/toast.variants.ts",

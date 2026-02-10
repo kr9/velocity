@@ -25,10 +25,14 @@ export const badgeVariants = cva(
         md: 'text-xs px-2.5 py-1 gap-1.5',
       },
       pill: {
-        true: 'rounded-full shadow-sm px-3',
+        true: 'rounded-full shadow-sm',
         false: 'rounded-md',
       },
     },
+    compoundVariants: [
+      { pill: true, size: 'sm', class: 'px-2.5' },
+      { pill: true, size: 'md', class: 'px-3' },
+    ],
     defaultVariants: {
       variant: 'default',
       size: 'md',

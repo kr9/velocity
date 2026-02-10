@@ -33,19 +33,24 @@ const linkTarget = target ?? (isExternal ? '_blank' : undefined);
 const linkRel = isExternal ? 'noopener noreferrer' : undefined;
 
 const Element = href ? 'a' : 'button';
+const isDisabled = disabled || loading;
+const isDisabledLink = href && isDisabled;
 
 const classes = cn(
   buttonVariants({ variant, size, fullWidth, icon }),
+  isDisabledLink && 'pointer-events-none',
   className
 );
 ---
 
 <Element
   class={classes}
-  disabled={disabled || loading}
-  href={href}
-  target={linkTarget}
-  rel={linkRel}
+  disabled={!href ? isDisabled : undefined}
+  href={isDisabledLink ? undefined : href}
+  target={isDisabledLink ? undefined : linkTarget}
+  rel={isDisabledLink ? undefined : linkRel}
+  aria-disabled={isDisabledLink ? 'true' : undefined}
+  tabindex={isDisabledLink ? '-1' : undefined}
   {...attrs}
 >
   {

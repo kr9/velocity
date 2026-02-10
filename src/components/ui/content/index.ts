@@ -1,2 +1,2 @@
 // Content Display Components
-export * from './CodeBlock';
+export { default as CodeBlock } from './CodeBlock';
