@@ -46,18 +46,17 @@ const codeExamples: Record<
 > = {
   theming: {
     lang: 'css',
-    code: `/* src/styles/tokens/colors.css */
+    code: `/* src/styles/themes/default.css — swap this file to re-theme */
 :root {
-  /* Brand Scale - International Orange */
-  --brand-500: oklch(62.5% 0.22 38);
-  --brand-600: oklch(53.2% 0.19 38);
-
   /* Semantic Tokens - Light Mode */
   --background: var(--gray-0);
   --foreground: var(--gray-900);
   --border: var(--gray-200);
   --primary: var(--gray-900);
+  --primary-foreground: var(--gray-0);
   --accent: var(--brand-500);
+  --card: var(--gray-0);
+  --ring: var(--gray-900);
 }
 
 /* Dark Mode */
@@ -66,8 +65,9 @@ const codeExamples: Record<
   --foreground: var(--gray-50);
   --border: var(--gray-800);
   --primary: var(--gray-0);
+  --primary-foreground: var(--gray-900);
 }`,
-    filename: 'src/styles/tokens/colors.css',
+    filename: 'src/styles/themes/default.css',
   },
   seo: {
     lang: 'astro',
@@ -99,51 +99,53 @@ const ogImage = image || \`/og/\${Astro.url.pathname}.png\`;
     lang: 'astro',
     code: `---
 // src/pages/index.astro
-import Hero from '../components/landing/Hero.astro';
-import PricingCalculator from '../components/PricingCalculator.tsx';
+import LandingLayout from '@/layouts/LandingLayout.astro';
+import { Hero } from '@/components/hero';
+import { TerminalDemo } from '@/components/ui/marketing/TerminalDemo';
+import FeatureTabs from '@/components/landing/FeatureTabs.tsx';
+import TechStack from '@/components/landing/TechStack.astro';
 ---
 
-<!-- Static HTML - ships 0kb JS -->
-<Hero />
+<!-- Static Astro components - ships 0kb JS -->
+<Hero layout="split" size="lg">
+  <!-- React component - hydrates immediately -->
+  <TerminalDemo slot="aside" client:load />
+</Hero>
 
-<!-- Hydrates only when visible in viewport -->
-<PricingCalculator client:visible />
+<!-- Static HTML, no JS -->
+<TechStack />
 
-<!-- Hydrates only on user interaction -->
-<Newsletter client:idle />
-
-<!-- Hydrates only on specific media query -->
-<MobileMenu client:media="(max-width: 768px)" />`,
+<!-- React component - hydrates when scrolled into view -->
+<FeatureTabs client:visible />`,
     filename: 'src/pages/index.astro',
   },
   components: {
     lang: 'typescript',
-    code: `// src/components/ui/Button.tsx
+    code: `// src/components/ui/form/Button/Button.tsx
 import { type Ref } from 'react';
 import { cn } from '@/lib/cn';
 import { isExternalUrl } from '@/lib/utils';
+import { buttonVariants, type ButtonVariants } from './button.variants';
 
-type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost';
-type ButtonSize = 'sm' | 'md' | 'lg';
-
-interface ButtonProps {
+interface BaseProps {
   ref?: Ref<HTMLButtonElement | HTMLAnchorElement>;
-  variant?: ButtonVariant;
-  size?: ButtonSize;
+  variant?: ButtonVariants['variant'];
+  size?: ButtonVariants['size'];
   loading?: boolean;
   href?: string;
   children: React.ReactNode;
 }
 
-export function Button({ ref, variant = 'primary', href, ...props }: ButtonProps) {
+export function Button({ ref, variant = 'primary', size = 'md', href, ...rest }: BaseProps) {
+  const classes = cn(buttonVariants({ variant, size }), rest.className);
   const isExternal = href ? isExternalUrl(href) : false;
 
   if (href) {
-    return <a ref={ref} href={href} target={isExternal ? '_blank' : undefined} />;
+    return <a ref={ref} href={href} className={classes} target={isExternal ? '_blank' : undefined} />;
   }
-  return <button ref={ref} className={cn(baseStyles, variants[variant])} />;
+  return <button ref={ref} className={classes} {...rest} />;
 }`,
-    filename: 'src/components/ui/Button.tsx',
+    filename: 'src/components/ui/form/Button/Button.tsx',
   },
   i18n: {
     lang: 'typescript',
@@ -182,14 +184,17 @@ const blog = defineCollection({
       title: z.string().max(100),
       description: z.string().max(200),
       publishedAt: z.coerce.date(),
+      updatedAt: z.coerce.date().optional(),
       author: z.string().default('Team'),
       image: image().optional(),
       tags: z.array(z.string()).default([]),
+      featured: z.boolean().default(false),
       draft: z.boolean().default(false),
+      locale: z.enum(['en', 'es', 'fr']).default('en'),
     }),
 });
 
-export const collections = { blog };
+export const collections = { blog, pages, authors, faqs };
 // + Pagefind indexes all content at build time`,
     filename: 'src/content.config.ts',
   },
