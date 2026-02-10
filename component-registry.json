@@ -1,6 +1,6 @@
 {
   "$schema": "./component-registry.schema.json",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "categories": {
     "ui": {
       "name": "UI Components",
@@ -12,7 +12,7 @@
     },
     "patterns": {
       "name": "Patterns",
-      "description": "Reusable form patterns"
+      "description": "Reusable form and UI patterns"
     },
     "hero": {
       "name": "Hero",
@@ -33,7 +33,8 @@
       "category": "ui",
       "files": [
         "src/components/ui/Button.astro",
-        "src/components/ui/Button.tsx"
+        "src/components/ui/Button.tsx",
+        "src/components/ui/button.variants.ts"
       ],
       "dependencies": {
         "utilities": ["cn"],
@@ -46,7 +47,8 @@
       "category": "ui",
       "files": [
         "src/components/ui/Card.astro",
-        "src/components/ui/Card.tsx"
+        "src/components/ui/Card.tsx",
+        "src/components/ui/card.variants.ts"
       ],
       "dependencies": {
         "utilities": ["cn"],
@@ -59,7 +61,8 @@
       "category": "ui",
       "files": [
         "src/components/ui/Input.astro",
-        "src/components/ui/Input.tsx"
+        "src/components/ui/Input.tsx",
+        "src/components/ui/input.variants.ts"
       ],
       "dependencies": {
         "utilities": ["cn"],
@@ -80,7 +83,10 @@
     "badge": {
       "name": "Badge",
       "category": "ui",
-      "files": ["src/components/ui/Badge.astro"],
+      "files": [
+        "src/components/ui/Badge.astro",
+        "src/components/ui/badge.variants.ts"
+      ],
       "dependencies": {
         "utilities": ["cn"],
         "components": []
@@ -90,7 +96,10 @@
     "alert": {
       "name": "Alert",
       "category": "ui",
-      "files": ["src/components/ui/Alert.astro"],
+      "files": [
+        "src/components/ui/Alert.astro",
+        "src/components/ui/alert.variants.ts"
+      ],
       "dependencies": {
         "utilities": ["cn"],
         "components": []
@@ -122,7 +131,8 @@
       "category": "ui",
       "files": [
         "src/components/ui/Select.astro",
-        "src/components/ui/Select.tsx"
+        "src/components/ui/Select.tsx",
+        "src/components/ui/select.variants.ts"
       ],
       "dependencies": {
         "utilities": ["cn"],
@@ -135,7 +145,8 @@
       "category": "ui",
       "files": [
         "src/components/ui/Checkbox.astro",
-        "src/components/ui/Checkbox.tsx"
+        "src/components/ui/Checkbox.tsx",
+        "src/components/ui/checkbox.variants.ts"
       ],
       "dependencies": {
         "utilities": ["cn"],
@@ -148,7 +159,8 @@
       "category": "ui",
       "files": [
         "src/components/ui/Radio.astro",
-        "src/components/ui/Radio.tsx"
+        "src/components/ui/Radio.tsx",
+        "src/components/ui/radio.variants.ts"
       ],
       "dependencies": {
         "utilities": ["cn"],
@@ -161,7 +173,8 @@
       "category": "ui",
       "files": [
         "src/components/ui/Textarea.astro",
-        "src/components/ui/Textarea.tsx"
+        "src/components/ui/Textarea.tsx",
+        "src/components/ui/textarea.variants.ts"
       ],
       "dependencies": {
         "utilities": ["cn"],
@@ -192,7 +205,10 @@
     "skeleton": {
       "name": "Skeleton",
       "category": "ui",
-      "files": ["src/components/ui/Skeleton.astro"],
+      "files": [
+        "src/components/ui/Skeleton.astro",
+        "src/components/ui/skeleton.variants.ts"
+      ],
       "dependencies": {
         "utilities": ["cn"],
         "components": []
@@ -232,7 +248,10 @@
     "avatar": {
       "name": "Avatar",
       "category": "ui",
-      "files": ["src/components/ui/Avatar.astro"],
+      "files": [
+        "src/components/ui/Avatar.astro",
+        "src/components/ui/avatar.variants.ts"
+      ],
       "dependencies": {
         "utilities": ["cn"],
         "components": []
@@ -252,10 +271,132 @@
     "vertical-tabs": {
       "name": "VerticalTabs",
       "category": "ui",
-      "files": ["src/components/ui/VerticalTabs.tsx"],
+      "files": [
+        "src/components/ui/VerticalTabs.astro",
+        "src/components/ui/VerticalTabs.tsx"
+      ],
       "dependencies": {
         "utilities": ["cn"],
         "components": []
+      },
+      "premium": false
+    },
+    "accordion": {
+      "name": "Accordion",
+      "category": "ui",
+      "files": [
+        "src/components/ui/Accordion.astro",
+        "src/components/ui/accordion.variants.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": ["icon"]
+      },
+      "premium": false
+    },
+    "avatar-group": {
+      "name": "AvatarGroup",
+      "category": "ui",
+      "files": ["src/components/ui/AvatarGroup.astro"],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": ["avatar"]
+      },
+      "premium": false
+    },
+    "pagination": {
+      "name": "Pagination",
+      "category": "ui",
+      "files": [
+        "src/components/ui/Pagination.astro",
+        "src/components/ui/pagination.variants.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": ["icon"]
+      },
+      "premium": false
+    },
+    "progress": {
+      "name": "Progress",
+      "category": "ui",
+      "files": [
+        "src/components/ui/Progress.astro",
+        "src/components/ui/progress.variants.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "separator": {
+      "name": "Separator",
+      "category": "ui",
+      "files": [
+        "src/components/ui/Separator.astro",
+        "src/components/ui/separator.variants.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "switch": {
+      "name": "Switch",
+      "category": "ui",
+      "files": [
+        "src/components/ui/Switch.astro",
+        "src/components/ui/Switch.tsx",
+        "src/components/ui/switch.variants.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "table": {
+      "name": "Table",
+      "category": "ui",
+      "files": ["src/components/ui/Table.astro"],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "toast": {
+      "name": "Toast",
+      "category": "ui",
+      "files": [
+        "src/components/ui/Toast.tsx",
+        "src/components/ui/toast.variants.ts"
+      ],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": []
+      },
+      "premium": false
+    },
+    "npm-copy-button": {
+      "name": "NpmCopyButton",
+      "category": "ui",
+      "files": ["src/components/ui/NpmCopyButton.astro"],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": ["icon"]
+      },
+      "premium": false
+    },
+    "cta": {
+      "name": "CTA",
+      "category": "ui",
+      "files": ["src/components/ui/CTA.astro"],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": ["logo"]
       },
       "premium": false
     },
@@ -289,10 +430,54 @@
       },
       "premium": false
     },
+    "search-input": {
+      "name": "SearchInput",
+      "category": "patterns",
+      "files": ["src/components/patterns/SearchInput.astro"],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": ["input"]
+      },
+      "premium": false
+    },
+    "password-input": {
+      "name": "PasswordInput",
+      "category": "patterns",
+      "files": ["src/components/patterns/PasswordInput.astro"],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": ["input", "icon"]
+      },
+      "premium": false
+    },
+    "stat-card": {
+      "name": "StatCard",
+      "category": "patterns",
+      "files": ["src/components/patterns/StatCard.astro"],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": ["card", "icon"]
+      },
+      "premium": false
+    },
+    "empty-state": {
+      "name": "EmptyState",
+      "category": "patterns",
+      "files": ["src/components/patterns/EmptyState.astro"],
+      "dependencies": {
+        "utilities": ["cn"],
+        "components": ["icon", "button"]
+      },
+      "premium": false
+    },
     "hero": {
       "name": "Hero",
       "category": "hero",
-      "files": ["src/components/hero/Hero.astro"],
+      "files": [
+        "src/components/hero/Hero.astro",
+        "src/components/hero/hero.variants.ts",
+        "src/components/hero/index.ts"
+      ],
       "dependencies": {
         "utilities": ["cn"],
         "components": []
@@ -302,7 +487,10 @@
     "header": {
       "name": "Header",
       "category": "layout",
-      "files": ["src/components/layout/Header.astro"],
+      "files": [
+        "src/components/layout/Header.astro",
+        "src/components/layout/header.variants.ts"
+      ],
       "dependencies": {
         "utilities": ["cn"],
         "components": ["button", "icon", "logo"]
@@ -312,20 +500,13 @@
     "footer": {
       "name": "Footer",
       "category": "layout",
-      "files": ["src/components/layout/Footer.astro"],
+      "files": [
+        "src/components/layout/Footer.astro",
+        "src/components/layout/footer.variants.ts"
+      ],
       "dependencies": {
         "utilities": ["cn"],
         "components": ["icon", "logo"]
-      },
-      "premium": false
-    },
-    "cta": {
-      "name": "CTA",
-      "category": "ui",
-      "files": ["src/components/ui/CTA.astro"],
-      "dependencies": {
-        "utilities": ["cn"],
-        "components": ["logo"]
       },
       "premium": false
     }
