@@ -20,11 +20,9 @@ const {
   ...attrs
 } = Astro.props;
 
-const isInvert = variant === 'invert';
-
 const sectionStyles = {
   default: 'bg-background',
-  invert: 'bg-surface-invert',
+  invert: 'invert-section bg-background text-foreground',
 };
 
 const sizes = {
@@ -66,7 +64,7 @@ const hasActionsSlot = Astro.slots.has('actions');
         <div class={cn(
           'mb-[var(--space-heading-gap)]',
           '[&>h2]:font-display [&>h2]:text-3xl md:[&>h2]:text-4xl lg:[&>h2]:text-5xl [&>h2]:font-bold [&>h2]:text-balance',
-          isInvert ? '[&>h2]:text-on-invert' : '[&>h2]:text-foreground'
+          '[&>h2]:text-foreground'
         )}>
           <slot name="heading" />
         </div>
@@ -77,7 +75,7 @@ const hasActionsSlot = Astro.slots.has('actions');
         <div class={cn(
           'text-lg md:text-xl mb-[var(--space-stack-lg)]',
           '[&>p]:text-lg md:[&>p]:text-xl',
-          isInvert ? 'text-on-invert-secondary [&>p]:text-on-invert-secondary' : 'text-foreground-muted [&>p]:text-foreground-muted'
+          'text-foreground-muted [&>p]:text-foreground-muted'
         )}>
           <slot name="description" />
         </div>

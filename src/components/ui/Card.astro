@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 import { cn } from '@/lib/cn';
+import { cardVariants } from './card.variants';
 
 interface Props extends HTMLAttributes<'div'> {
   variant?: 'default' | 'solid' | 'outline' | 'ghost' | 'elevated';
@@ -20,27 +21,8 @@ const {
 
 const Element = href ? 'a' : 'div';
 
-const variants = {
-  default: 'bg-card border border-card-border',
-  solid: 'bg-secondary border border-transparent',
-  outline: 'bg-transparent border-2 border-border',
-  ghost: 'bg-transparent border border-transparent',
-  elevated: 'bg-card border border-border shadow-lg',
-};
-
-const paddings = {
-  none: '',
-  sm: 'p-4',
-  md: 'p-6',
-  lg: 'p-8',
-};
-
 const cardStyles = cn(
-  'rounded-xl',
-  'transition-all duration-200 ease-out',
-  variants[variant],
-  paddings[padding],
-  hover && 'hover:border-border-strong hover:shadow-md hover:-translate-y-0.5 cursor-pointer',
+  cardVariants({ variant, padding, hover }),
   href && 'block',
   className
 );

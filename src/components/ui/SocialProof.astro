@@ -12,8 +12,6 @@ interface Props {
   avatarCount?: number;
   /** Trust indicator text */
   text: string;
-  /** Visual variant for different backgrounds */
-  variant?: 'default' | 'invert';
   /** Size of avatars */
   size?: 'sm' | 'md';
   /** Additional CSS classes */
@@ -24,23 +22,9 @@ const {
   avatars,
   avatarCount = 3,
   text,
-  variant = 'default',
   size = 'sm',
   class: className,
 } = Astro.props;
-
-const variants = {
-  default: {
-    container: 'text-foreground-subtle',
-    avatar: 'border-background bg-border dark:bg-background-tertiary text-foreground-muted',
-    ring: 'ring-background',
-  },
-  invert: {
-    container: 'text-on-invert/60',
-    avatar: 'border-surface-invert bg-surface-invert-secondary text-on-invert/70',
-    ring: 'ring-surface-invert',
-  },
-};
 
 const sizes = {
   sm: 'h-8 w-8 text-[10px]',
@@ -51,7 +35,7 @@ const sizes = {
 const displayAvatars = avatars || Array.from({ length: avatarCount }, () => null);
 ---
 
-<div class={cn('flex items-center gap-4 text-sm', variants[variant].container, className)}>
+<div class={cn('flex items-center gap-4 text-sm text-foreground-subtle', className)}>
   <div class="flex -space-x-2" role="img" aria-label={`${displayAvatars.length} contributors`}>
     {displayAvatars.map((src, i) => (
       src ? (
@@ -59,10 +43,8 @@ const displayAvatars = avatars || Array.from({ length: avatarCount }, () => null
           src={src}
           alt=""
           class={cn(
-            'rounded-full border-2 object-cover',
-            sizes[size],
-            variants[variant].ring,
-            'ring-2'
+            'rounded-full border-2 object-cover ring-2 ring-background',
+            sizes[size]
           )}
           loading="lazy"
           decoding="async"
@@ -71,8 +53,8 @@ const displayAvatars = avatars || Array.from({ length: avatarCount }, () => null
         <div
           class={cn(
             'flex items-center justify-center rounded-full border-2 font-bold',
-            sizes[size],
-            variants[variant].avatar
+            'border-background bg-border text-foreground-muted',
+            sizes[size]
           )}
           aria-hidden="true"
         >

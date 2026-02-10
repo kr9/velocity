@@ -9,8 +9,6 @@ interface Props {
   copiedText?: string;
   /** Button size */
   size?: 'sm' | 'md' | 'lg';
-  /** Color scheme for dark backgrounds */
-  colorScheme?: 'default' | 'invert';
   /** Additional CSS classes */
   class?: string;
 }
@@ -19,11 +17,8 @@ const {
   command = 'npm create velocity-astro@latest',
   copiedText = 'Copied!',
   size = 'lg',
-  colorScheme = 'default',
   class: className,
 } = Astro.props;
-
-const isInvert = colorScheme === 'invert';
 
 // Generate unique ID for this instance
 const uniqueId = `npm-copy-${Math.random().toString(36).slice(2, 9)}`;
@@ -33,13 +28,6 @@ const sizes = {
   md: 'h-10 px-4 text-sm',
   lg: 'h-12 px-5 text-base',
 };
-
-const colorStyles = isInvert
-  ? 'bg-on-invert text-surface-invert hover:bg-on-invert/90'
-  : 'bg-foreground text-background hover:bg-foreground/90';
-
-const secondaryTextColor = isInvert ? 'text-surface-invert/60' : 'text-secondary';
-const successColor = 'text-success';
 ---
 
 <button
@@ -49,7 +37,7 @@ const successColor = 'text-success';
     'inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all',
     'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none',
     'active:scale-[0.98]',
-    colorStyles,
+    'bg-foreground text-background hover:bg-foreground/90',
     sizes[size],
     className
   )}
@@ -58,10 +46,10 @@ const successColor = 'text-success';
 >
   <Icon name="terminal" size="md" />
   <span data-command-text>{command}</span>
-  <span data-copy-icon class={cn('ml-1', secondaryTextColor)}>
+  <span data-copy-icon class="ml-1 text-secondary">
     <Icon name="copy" size="sm" />
   </span>
-  <span data-check-icon class={cn('ml-1 hidden', successColor)}>
+  <span data-check-icon class="ml-1 hidden text-success">
     <Icon name="check" size="sm" />
   </span>
 </button>

@@ -47,6 +47,7 @@
     "@fontsource-variable/outfit": "^5.2.8",
     "@resvg/resvg-js": "^2.6.2",
     "astro": "6.0.0-beta.9",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.563.0",
     "react": "^19.0.0",

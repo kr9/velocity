@@ -1,0 +1,130 @@
+/* =============================================================================
+   Velocity Theme - Midnight
+   =============================================================================
+   A blue-tinted dark theme with cool undertones. Great for developer tools,
+   dashboards, and applications that want a modern, atmospheric feel.
+
+   To use: swap the theme import in global.css:
+     @import './themes/midnight.css';
+   ============================================================================= */
+
+:root {
+  /* -------------------------------------------------------------------------
+     Semantic Tokens - Light Mode (blue-tinted grays)
+     ------------------------------------------------------------------------- */
+  --background: oklch(99% 0.005 250);
+  --background-secondary: oklch(97% 0.008 250);
+  --background-tertiary: oklch(95% 0.01 250);
+  --background-elevated: oklch(99% 0.005 250);
+
+  --foreground: oklch(18% 0.02 250);
+  --foreground-secondary: oklch(35% 0.02 250);
+  --foreground-muted: oklch(45% 0.015 250);
+  --foreground-subtle: oklch(55% 0.01 250);
+
+  --border: oklch(90% 0.015 250);
+  --border-strong: oklch(82% 0.02 250);
+  --border-subtle: oklch(95% 0.008 250);
+
+  --primary: oklch(18% 0.02 250);
+  --primary-hover: oklch(25% 0.02 250);
+  --primary-foreground: oklch(99% 0.005 250);
+
+  --secondary: oklch(95% 0.01 250);
+  --secondary-hover: oklch(90% 0.015 250);
+  --secondary-foreground: oklch(18% 0.02 250);
+
+  --accent: var(--brand-500);
+  --accent-hover: var(--brand-600);
+  --accent-light: oklch(94% 0.03 45);
+
+  --muted: oklch(95% 0.01 250);
+  --muted-foreground: oklch(55% 0.01 250);
+
+  --card: oklch(99% 0.005 250);
+  --card-border: oklch(90% 0.015 250);
+
+  --input-bg: oklch(99% 0.005 250);
+  --input-border: oklch(82% 0.02 250);
+  --input-focus: oklch(18% 0.02 250);
+
+  --ring: oklch(45% 0.15 250);
+
+  /* Destructive */
+  --destructive: var(--error);
+  --destructive-foreground: oklch(99% 0 0);
+
+  /* Gradient colors */
+  --gradient-start: oklch(97% 0.008 250);
+  --gradient-end: oklch(99% 0.005 250);
+
+  /* -------------------------------------------------------------------------
+     Inverted/Contrast Section
+     ------------------------------------------------------------------------- */
+  --surface-invert: oklch(15% 0.03 250);
+  --surface-invert-secondary: oklch(20% 0.025 250);
+  --surface-invert-tertiary: oklch(25% 0.02 250);
+  --on-invert: oklch(95% 0.008 250);
+  --on-invert-secondary: oklch(80% 0.015 250);
+  --on-invert-muted: oklch(65% 0.01 250);
+  --border-invert: oklch(25% 0.02 250);
+  --border-invert-strong: oklch(35% 0.02 250);
+}
+
+/* -------------------------------------------------------------------------
+   Dark Mode - Deep midnight blue
+   ------------------------------------------------------------------------- */
+.dark {
+  --background: oklch(12% 0.03 250);
+  --background-secondary: oklch(16% 0.025 250);
+  --background-tertiary: oklch(20% 0.02 250);
+  --background-elevated: oklch(16% 0.025 250);
+
+  --foreground: oklch(95% 0.008 250);
+  --foreground-secondary: oklch(75% 0.015 250);
+  --foreground-muted: oklch(55% 0.015 250);
+  --foreground-subtle: oklch(45% 0.01 250);
+
+  --border: oklch(22% 0.025 250);
+  --border-strong: oklch(30% 0.02 250);
+  --border-subtle: oklch(16% 0.025 250);
+
+  --primary: oklch(95% 0.008 250);
+  --primary-hover: oklch(85% 0.015 250);
+  --primary-foreground: oklch(12% 0.03 250);
+
+  --secondary: oklch(20% 0.02 250);
+  --secondary-hover: oklch(25% 0.02 250);
+  --secondary-foreground: oklch(90% 0.01 250);
+
+  --muted: oklch(20% 0.02 250);
+  --muted-foreground: oklch(55% 0.015 250);
+
+  --card: oklch(16% 0.025 250);
+  --card-border: oklch(22% 0.025 250);
+
+  --input-bg: oklch(16% 0.025 250);
+  --input-border: oklch(30% 0.02 250);
+  --input-focus: oklch(95% 0.008 250);
+
+  --ring: oklch(60% 0.15 250);
+
+  /* Gradient colors */
+  --gradient-start: oklch(12% 0.03 250);
+  --gradient-end: oklch(16% 0.025 250);
+
+  /* Status colors - adjusted for dark blue bg */
+  --success-light: oklch(20% 0.04 145);
+  --warning-light: oklch(20% 0.04 85);
+  --error-light: oklch(20% 0.04 25);
+
+  /* Inverted section */
+  --surface-invert: oklch(16% 0.025 250);
+  --surface-invert-secondary: oklch(20% 0.02 250);
+  --surface-invert-tertiary: oklch(25% 0.02 250);
+  --on-invert: oklch(95% 0.008 250);
+  --on-invert-secondary: oklch(75% 0.015 250);
+  --on-invert-muted: oklch(55% 0.015 250);
+  --border-invert: oklch(25% 0.02 250);
+  --border-invert-strong: oklch(35% 0.02 250);
+}

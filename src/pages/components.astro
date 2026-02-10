@@ -22,6 +22,18 @@ import { Hero } from '@/components/hero';
 import SocialProof from '@/components/ui/SocialProof.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
+import Separator from '@/components/ui/Separator.astro';
+import Switch from '@/components/ui/Switch.astro';
+import Accordion from '@/components/ui/Accordion.astro';
+import Progress from '@/components/ui/Progress.astro';
+import Table from '@/components/ui/Table.astro';
+import Pagination from '@/components/ui/Pagination.astro';
+import AvatarGroup from '@/components/ui/AvatarGroup.astro';
+import SearchInput from '@/components/patterns/SearchInput.astro';
+import PasswordInput from '@/components/patterns/PasswordInput.astro';
+import StatCard from '@/components/patterns/StatCard.astro';
+import EmptyState from '@/components/patterns/EmptyState.astro';
+import { ToastDemo } from '@/components/ui/ToastDemo';
 
 // Component categories for navigation
 const categories = [
@@ -34,6 +46,8 @@ const categories = [
   { id: 'navigation', label: 'Navigation', icon: 'menu' },
   { id: 'data', label: 'Data Display', icon: 'layers' },
   { id: 'loading', label: 'Loading', icon: 'loader' },
+  { id: 'toggles', label: 'Toggles', icon: 'toggle-left' },
+  { id: 'patterns', label: 'Patterns', icon: 'layers' },
 ];
 ---
 
@@ -44,7 +58,7 @@ const categories = [
 
   <!-- Hero Section -->
   <Hero layout="split" size="lg" showGrid showBlob>
-    <Badge slot="badge" pill pulse>40+ Production Components</Badge>
+    <Badge slot="badge" pill pulse>50+ Production Components</Badge>
 
     <h1 slot="title">
       Component <span class="text-brand-500">Library</span>
@@ -203,18 +217,18 @@ const categories = [
             <span class="showcase-hint">Always dark, regardless of theme</span>
           </div>
           <div class="showcase-content !p-0 overflow-hidden rounded-b-xl">
-            <Hero layout="centered" size="sm" class="!pt-10 !pb-10 bg-surface-invert">
+            <Hero layout="centered" size="sm" class="invert-section !pt-10 !pb-10 bg-background">
               <h2 slot="title">
-                <span class="text-on-invert">Dark mode </span><span class="text-brand-400">always</span>
+                <span class="text-foreground">Dark mode </span><span class="text-brand-400">always</span>
               </h2>
 
-              <p slot="description" class="text-on-invert-secondary">
+              <p slot="description" class="text-foreground-secondary">
                 Perfect for CTAs and sections that need to stand out.
               </p>
 
               <Fragment slot="actions">
                 <Button size="sm">Primary Action</Button>
-                <Button size="sm" variant="outline" class="border-border-invert text-on-invert hover:bg-surface-invert-secondary">
+                <Button size="sm" variant="outline">
                   Secondary
                 </Button>
               </Fragment>
@@ -222,7 +236,6 @@ const categories = [
               <SocialProof
                 class="mt-[var(--space-stack-lg)]"
                 text="Join thousands of users"
-                variant="invert"
                 avatars={[
                   'https://i.pravatar.cc/150?img=5',
                   'https://i.pravatar.cc/150?img=8',
@@ -706,11 +719,11 @@ const categories = [
                 These components are just the beginning. Clone Velocity and start shipping faster.
               </p>
               <Fragment slot="actions">
-                <Button colorScheme="invert">
+                <Button>
                   <Icon name="github" size="sm" />
                   Clone Repository
                 </Button>
-                <Button variant="outline" colorScheme="invert">Read Documentation</Button>
+                <Button variant="outline">Read Documentation</Button>
               </Fragment>
             </CTA>
           </div>
@@ -926,6 +939,35 @@ const categories = [
             </div>
           </div>
         </div>
+
+        <!-- Switch -->
+        <div class="grid gap-6 lg:grid-cols-2">
+          <div class="component-showcase">
+            <div class="showcase-header">
+              <span class="showcase-label">Switch</span>
+              <span class="showcase-hint">Toggle on/off states</span>
+            </div>
+            <div class="showcase-content space-y-5">
+              <Switch label="Email notifications" description="Receive email alerts for important updates" checked />
+              <Switch label="Marketing emails" description="Get product news and feature announcements" />
+              <Switch label="SMS alerts" description="Receive text messages for critical events" />
+            </div>
+          </div>
+
+          <div class="component-showcase">
+            <div class="showcase-header">
+              <span class="showcase-label">Switch Sizes & States</span>
+              <span class="showcase-hint">sm, md, lg + disabled</span>
+            </div>
+            <div class="showcase-content space-y-5">
+              <Switch size="sm" label="Small switch" checked />
+              <Switch size="md" label="Medium switch (default)" checked />
+              <Switch size="lg" label="Large switch" checked />
+              <Switch label="Disabled off" disabled />
+              <Switch label="Disabled on" disabled checked />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -990,6 +1032,17 @@ const categories = [
             <Alert variant="error" title="Build failed" dismissible>
               Error in <code class="text-xs font-mono">src/components/Button.tsx</code> — missing required prop "variant"
             </Alert>
+          </div>
+        </div>
+
+        <!-- Toast -->
+        <div class="component-showcase">
+          <div class="showcase-header">
+            <span class="showcase-label">Toast Notifications</span>
+            <span class="showcase-hint">Click buttons to trigger toasts</span>
+          </div>
+          <div class="showcase-content">
+            <ToastDemo client:load />
           </div>
         </div>
       </div>
@@ -1263,6 +1316,52 @@ const categories = [
             </div>
           </div>
         </div>
+
+        <!-- Pagination -->
+        <div class="component-showcase">
+          <div class="showcase-header">
+            <span class="showcase-label">Pagination</span>
+            <span class="showcase-hint">Page navigation with ellipsis</span>
+          </div>
+          <div class="showcase-content space-y-6">
+            <div>
+              <p class="text-xs text-foreground-muted mb-3 font-mono">Page 1 of 10</p>
+              <Pagination currentPage={1} totalPages={10} />
+            </div>
+            <div>
+              <p class="text-xs text-foreground-muted mb-3 font-mono">Page 5 of 10</p>
+              <Pagination currentPage={5} totalPages={10} />
+            </div>
+            <div>
+              <p class="text-xs text-foreground-muted mb-3 font-mono">Page 10 of 10</p>
+              <Pagination currentPage={10} totalPages={10} />
+            </div>
+          </div>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-2">
+          <div class="component-showcase">
+            <div class="showcase-header">
+              <span class="showcase-label">Few Pages</span>
+              <span class="showcase-hint">No ellipsis needed</span>
+            </div>
+            <div class="showcase-content">
+              <Pagination currentPage={2} totalPages={4} />
+            </div>
+          </div>
+
+          <div class="component-showcase">
+            <div class="showcase-header">
+              <span class="showcase-label">Size Variants</span>
+              <span class="showcase-hint">sm, md, lg</span>
+            </div>
+            <div class="showcase-content space-y-4">
+              <Pagination currentPage={3} totalPages={8} size="sm" />
+              <Pagination currentPage={3} totalPages={8} size="md" />
+              <Pagination currentPage={3} totalPages={8} size="lg" />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1517,6 +1616,127 @@ const categories = [
             </div>
           </div>
         </div>
+
+        <!-- Separator -->
+        <div class="component-showcase">
+          <div class="showcase-header">
+            <span class="showcase-label">Separator</span>
+            <span class="showcase-hint">Horizontal, vertical, and with labels</span>
+          </div>
+          <div class="showcase-content space-y-6">
+            <div>
+              <p class="text-sm text-foreground-muted mb-3">Horizontal (default)</p>
+              <Separator />
+            </div>
+            <div>
+              <p class="text-sm text-foreground-muted mb-3">With label</p>
+              <Separator label="OR" />
+            </div>
+            <div>
+              <p class="text-sm text-foreground-muted mb-3">With label text</p>
+              <Separator label="Continue with" />
+            </div>
+            <div>
+              <p class="text-sm text-foreground-muted mb-3">Vertical (in flex container)</p>
+              <div class="flex items-center gap-4 h-8">
+                <span class="text-sm text-foreground-muted">Item 1</span>
+                <Separator orientation="vertical" />
+                <span class="text-sm text-foreground-muted">Item 2</span>
+                <Separator orientation="vertical" />
+                <span class="text-sm text-foreground-muted">Item 3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="component-showcase">
+          <div class="showcase-header">
+            <span class="showcase-label">Table</span>
+            <span class="showcase-hint">Styled data table with hover and striping</span>
+          </div>
+          <div class="showcase-content">
+            <Table
+              columns={[
+                { key: 'name', label: 'Name' },
+                { key: 'email', label: 'Email' },
+                { key: 'role', label: 'Role' },
+                { key: 'status', label: 'Status', align: 'center' },
+              ]}
+              rows={[
+                { name: 'Sarah Chen', email: 'sarah@example.com', role: 'Admin', status: 'Active' },
+                { name: 'Alex Johnson', email: 'alex@example.com', role: 'Editor', status: 'Active' },
+                { name: 'Sam Wilson', email: 'sam@example.com', role: 'Viewer', status: 'Inactive' },
+              ]}
+            />
+          </div>
+        </div>
+
+        <div class="component-showcase">
+          <div class="showcase-header">
+            <span class="showcase-label">Striped & Compact Table</span>
+            <span class="showcase-hint">Alternating rows with reduced padding</span>
+          </div>
+          <div class="showcase-content">
+            <Table
+              striped
+              compact
+              columns={[
+                { key: 'id', label: 'ID', align: 'center' },
+                { key: 'product', label: 'Product' },
+                { key: 'price', label: 'Price', align: 'right' },
+                { key: 'stock', label: 'Stock', align: 'right' },
+              ]}
+              rows={[
+                { id: '001', product: 'Velocity Pro', price: '$49', stock: '120' },
+                { id: '002', product: 'Velocity Team', price: '$99', stock: '85' },
+                { id: '003', product: 'Velocity Enterprise', price: '$249', stock: '42' },
+                { id: '004', product: 'Velocity Starter', price: 'Free', stock: '∞' },
+              ]}
+            />
+          </div>
+        </div>
+
+        <!-- AvatarGroup -->
+        <div class="component-showcase">
+          <div class="showcase-header">
+            <span class="showcase-label">Avatar Group</span>
+            <span class="showcase-hint">Stacked avatars with overflow</span>
+          </div>
+          <div class="showcase-content space-y-6">
+            <div>
+              <p class="text-xs text-foreground-muted mb-3 font-mono">max=4, 6 avatars</p>
+              <AvatarGroup
+                max={4}
+                avatars={[
+                  { src: 'https://i.pravatar.cc/150?img=12', alt: 'User 1' },
+                  { src: 'https://i.pravatar.cc/150?img=33', alt: 'User 2' },
+                  { src: 'https://i.pravatar.cc/150?img=47', alt: 'User 3' },
+                  { src: 'https://i.pravatar.cc/150?img=5', alt: 'User 4' },
+                  { src: 'https://i.pravatar.cc/150?img=8', alt: 'User 5' },
+                  { src: 'https://i.pravatar.cc/150?img=11', alt: 'User 6' },
+                ]}
+              />
+            </div>
+            <div class="flex flex-wrap items-end gap-8">
+              {(['xs', 'sm', 'md', 'lg'] as const).map((size) => (
+                <div>
+                  <p class="text-xs text-foreground-muted mb-2 font-mono">size="{size}"</p>
+                  <AvatarGroup
+                    size={size}
+                    max={3}
+                    avatars={[
+                      { src: 'https://i.pravatar.cc/150?img=12', alt: 'User 1' },
+                      { src: 'https://i.pravatar.cc/150?img=33', alt: 'User 2' },
+                      { src: 'https://i.pravatar.cc/150?img=47', alt: 'User 3' },
+                      { src: 'https://i.pravatar.cc/150?img=5', alt: 'User 4' },
+                    ]}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1574,6 +1794,235 @@ const categories = [
             </div>
           </div>
         </div>
+
+        <!-- Progress Determinate -->
+        <div class="component-showcase">
+          <div class="showcase-header">
+            <span class="showcase-label">Progress Bar</span>
+            <span class="showcase-hint">Determinate progress indicators</span>
+          </div>
+          <div class="showcase-content space-y-5">
+            <div>
+              <p class="text-xs text-foreground-muted mb-2 font-mono">25% — default</p>
+              <Progress value={25} />
+            </div>
+            <div>
+              <p class="text-xs text-foreground-muted mb-2 font-mono">60% — brand</p>
+              <Progress value={60} variant="brand" />
+            </div>
+            <div>
+              <p class="text-xs text-foreground-muted mb-2 font-mono">90% — success</p>
+              <Progress value={90} variant="success" />
+            </div>
+          </div>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-2">
+          <!-- Color Variants -->
+          <div class="component-showcase">
+            <div class="showcase-header">
+              <span class="showcase-label">Color Variants</span>
+              <span class="showcase-hint">All 5 at 70%</span>
+            </div>
+            <div class="showcase-content space-y-4">
+              <Progress value={70} variant="default" />
+              <Progress value={70} variant="brand" />
+              <Progress value={70} variant="success" />
+              <Progress value={70} variant="warning" />
+              <Progress value={70} variant="error" />
+            </div>
+          </div>
+
+          <!-- Sizes -->
+          <div class="component-showcase">
+            <div class="showcase-header">
+              <span class="showcase-label">Size Variants</span>
+              <span class="showcase-hint">sm, md, lg + indeterminate</span>
+            </div>
+            <div class="showcase-content space-y-5">
+              <div>
+                <p class="text-xs text-foreground-muted mb-2 font-mono">size="sm"</p>
+                <Progress value={50} size="sm" variant="brand" />
+              </div>
+              <div>
+                <p class="text-xs text-foreground-muted mb-2 font-mono">size="md"</p>
+                <Progress value={50} size="md" variant="brand" />
+              </div>
+              <div>
+                <p class="text-xs text-foreground-muted mb-2 font-mono">size="lg"</p>
+                <Progress value={50} size="lg" variant="brand" />
+              </div>
+              <div>
+                <p class="text-xs text-foreground-muted mb-2 font-mono">Indeterminate</p>
+                <Progress variant="brand" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toggles Section -->
+    <section id="toggles" class="scroll-mt-32">
+      <div class="flex items-start gap-5 mb-10">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 shrink-0">
+          <Icon name="toggle-left" size="lg" />
+        </div>
+        <div>
+          <h2 class="font-display text-2xl font-bold text-foreground">Toggles</h2>
+          <p class="text-foreground-muted mt-1">Accordion and expandable content patterns with native HTML details/summary.</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Accordion Default -->
+        <div class="component-showcase">
+          <div class="showcase-header">
+            <span class="showcase-label">Accordion - Default</span>
+            <span class="showcase-hint">Collapsible FAQ sections</span>
+          </div>
+          <div class="showcase-content">
+            <Accordion
+              items={[
+                { title: 'What is Velocity?', content: 'Velocity is a modern Astro starter template with Tailwind CSS v4, React islands, and a comprehensive component library. It includes everything you need to build production-ready websites.' },
+                { title: 'Is it free to use?', content: 'Yes! Velocity is open source and completely free. You can use it for personal and commercial projects without any restrictions.' },
+                { title: 'How do I customize the theme?', content: 'Velocity uses CSS custom properties (design tokens) for theming. Edit the token files in src/styles/tokens/ to customize colors, spacing, typography, and more.' },
+              ]}
+            />
+          </div>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-2">
+          <!-- Accordion Card Variant -->
+          <div class="component-showcase">
+            <div class="showcase-header">
+              <span class="showcase-label">Card Variant</span>
+              <span class="showcase-hint">With one item open by default</span>
+            </div>
+            <div class="showcase-content">
+              <Accordion
+                variant="card"
+                items={[
+                  { title: 'Getting Started', content: 'Run the CLI scaffolding command to create a new project. Customize with flags like --demo, --components, and --i18n.', defaultOpen: true },
+                  { title: 'Deployment', content: 'Deploy to Vercel, Netlify, or any static host. The build output is optimized for performance out of the box.' },
+                  { title: 'Support', content: 'Join our GitHub discussions or file an issue for bugs and feature requests.' },
+                ]}
+              />
+            </div>
+          </div>
+
+          <!-- Accordion Exclusive -->
+          <div class="component-showcase">
+            <div class="showcase-header">
+              <span class="showcase-label">Exclusive Mode</span>
+              <span class="showcase-hint">Only one item open at a time</span>
+            </div>
+            <div class="showcase-content">
+              <Accordion
+                exclusive
+                items={[
+                  { title: 'Free Plan', content: 'Perfect for personal projects and learning. Includes all core components and basic templates.' },
+                  { title: 'Pro Plan', content: 'Advanced components, premium templates, priority support, and commercial license.' },
+                  { title: 'Enterprise', content: 'Custom development, dedicated support, SLA guarantees, and team training workshops.' },
+                ]}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Patterns Section -->
+    <section id="patterns" class="scroll-mt-32">
+      <div class="flex items-start gap-5 mb-10">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 shrink-0">
+          <Icon name="layers" size="lg" />
+        </div>
+        <div>
+          <h2 class="font-display text-2xl font-bold text-foreground">Patterns</h2>
+          <p class="text-foreground-muted mt-1">Pre-composed component patterns for common UI needs — search, passwords, stats, and empty states.</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- SearchInput -->
+        <div class="component-showcase">
+          <div class="showcase-header">
+            <span class="showcase-label">Search Input</span>
+            <span class="showcase-hint">Input with search icon, multiple sizes</span>
+          </div>
+          <div class="showcase-content space-y-5">
+            <SearchInput size="sm" placeholder="Search files..." />
+            <SearchInput placeholder="Search components..." />
+            <SearchInput size="lg" placeholder="Search documentation..." />
+          </div>
+        </div>
+
+        <!-- PasswordInput -->
+        <div class="grid gap-6 lg:grid-cols-2">
+          <div class="component-showcase">
+            <div class="showcase-header">
+              <span class="showcase-label">Password Input</span>
+              <span class="showcase-hint">With show/hide toggle</span>
+            </div>
+            <div class="showcase-content space-y-5">
+              <PasswordInput label="Password" hint="Must be at least 8 characters" />
+              <PasswordInput label="Confirm Password" placeholder="Re-enter password" />
+            </div>
+          </div>
+
+          <div class="component-showcase">
+            <div class="showcase-header">
+              <span class="showcase-label">Password Sizes</span>
+              <span class="showcase-hint">sm, md, lg</span>
+            </div>
+            <div class="showcase-content space-y-5">
+              <PasswordInput size="sm" label="Small" />
+              <PasswordInput size="md" label="Medium (default)" />
+              <PasswordInput size="lg" label="Large" />
+            </div>
+          </div>
+        </div>
+
+        <!-- StatCard -->
+        <div class="component-showcase">
+          <div class="showcase-header">
+            <span class="showcase-label">Stat Cards</span>
+            <span class="showcase-hint">Metric display with trend indicators</span>
+          </div>
+          <div class="showcase-content">
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <StatCard label="Total Revenue" value="$45,231" trend="up" trendText="+12.5% from last month" icon="trending-up" />
+              <StatCard label="Active Users" value="2,338" trend="up" trendText="+8.2% from last week" icon="users" />
+              <StatCard label="Bounce Rate" value="24.3%" trend="down" trendText="-3.1% from last month" icon="trending-down" />
+              <StatCard label="Avg. Session" value="3m 42s" trend="neutral" trendText="No change" icon="loader" />
+            </div>
+          </div>
+        </div>
+
+        <!-- EmptyState -->
+        <div class="component-showcase">
+          <div class="showcase-header">
+            <span class="showcase-label">Empty State</span>
+            <span class="showcase-hint">Placeholder for empty data views</span>
+          </div>
+          <div class="showcase-content">
+            <div class="grid gap-6 lg:grid-cols-2">
+              <EmptyState
+                icon="inbox"
+                title="No messages yet"
+                description="When you receive messages, they'll appear here. Start a conversation to get going."
+                actionLabel="New Message"
+                actionHref="#"
+              />
+              <EmptyState
+                icon="search"
+                title="No results found"
+                description="Try adjusting your search or filters to find what you're looking for."
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1586,11 +2035,11 @@ const categories = [
       These components are just the beginning. Clone Velocity and start shipping faster.
     </p>
     <Fragment slot="actions">
-      <Button colorScheme="invert" href="https://github.com/southwellmedia/velocity" target="_blank">
+      <Button href="https://github.com/southwellmedia/velocity" target="_blank">
         <Icon name="github" size="sm" />
         Clone Repository
       </Button>
-      <Button variant="outline" colorScheme="invert" href="/blog">
+      <Button variant="outline" href="/blog">
         Read Documentation
       </Button>
     </Fragment>

@@ -1,5 +1,6 @@
 import { type SelectHTMLAttributes, type Ref, useId } from 'react';
 import { cn } from '@/lib/cn';
+import { selectVariants } from './select.variants';
 
 type SelectSize = 'sm' | 'md' | 'lg';
 
@@ -14,31 +15,18 @@ interface SelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'ref
   label?: string;
   error?: string;
   hint?: string;
-  /** @deprecated Use `size` instead */
-  selectSize?: SelectSize;
   size?: SelectSize;
   options: Option[];
   placeholder?: string;
 }
 
-const sizes: Record<SelectSize, string> = {
-  sm: 'h-8 px-3 text-sm',
-  md: 'h-10 px-4 text-sm',
-  lg: 'h-12 px-4 text-base',
-};
-
-export function Select({ ref, label, error, hint, selectSize, size = 'md', options, placeholder, className, id, ...props }: SelectProps) {
-  const resolvedSize = selectSize ?? size;
+export function Select({ ref, label, error, hint, size = 'md', options, placeholder, className, id, ...props }: SelectProps) {
   const generatedId = useId();
   const selectId = id || generatedId;
 
   const selectStyles = cn(
-    'w-full rounded-lg border bg-background appearance-none cursor-pointer',
-    'transition-colors duration-[--transition-fast]',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-    'disabled:cursor-not-allowed disabled:opacity-50',
-    error ? 'border-destructive focus-visible:ring-destructive' : 'border-border',
-    sizes[resolvedSize]
+    selectVariants({ size }),
+    error && 'border-destructive focus-visible:ring-destructive'
   );
 
   return (

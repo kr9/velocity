@@ -1,16 +1,15 @@
 import { type ButtonHTMLAttributes, type AnchorHTMLAttributes, type Ref } from 'react';
 import { cn } from '@/lib/cn';
 import { isExternalUrl } from '@/lib/utils';
-
-type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive';
-type ButtonSize = 'sm' | 'md' | 'lg';
+import { buttonVariants, type ButtonVariants } from './button.variants';
 
 interface BaseProps {
   ref?: Ref<HTMLButtonElement | HTMLAnchorElement>;
-  variant?: ButtonVariant;
-  size?: ButtonSize;
+  variant?: ButtonVariants['variant'];
+  size?: ButtonVariants['size'];
   loading?: boolean;
   fullWidth?: boolean;
+  icon?: boolean;
   disabled?: boolean;
 }
 
@@ -25,29 +24,6 @@ type ButtonAsLink = BaseProps &
   };
 
 type ButtonProps = ButtonAsButton | ButtonAsLink;
-
-const baseStyles = `
-  inline-flex items-center justify-center gap-2
-  font-medium rounded-md
-  transition-colors duration-[--transition-fast] ease-[--ease-default]
-  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
-  disabled:pointer-events-none disabled:opacity-50
-  [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0
-`;
-
-const variants: Record<ButtonVariant, string> = {
-  primary: 'bg-primary text-primary-foreground hover:bg-primary/90',
-  secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-  outline: 'border border-border bg-background hover:bg-accent hover:text-accent-foreground',
-  ghost: 'hover:bg-accent hover:text-accent-foreground',
-  destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-};
-
-const sizes: Record<ButtonSize, string> = {
-  sm: 'h-8 px-3 text-xs',
-  md: 'h-10 px-4 text-sm',
-  lg: 'h-12 px-5 text-base',
-};
 
 const LoadingSpinner = () => (
   <svg
@@ -73,13 +49,14 @@ export function Button(props: ButtonProps) {
     size = 'md',
     loading = false,
     fullWidth = false,
+    icon = false,
     className,
     children,
     disabled,
     ...rest
   } = props;
 
-  const classes = cn(baseStyles, variants[variant], sizes[size], fullWidth && 'w-full', className);
+  const classes = cn(buttonVariants({ variant, size, fullWidth, icon }), className);
 
   if ('href' in props && props.href) {
     const isExternal = isExternalUrl(props.href);

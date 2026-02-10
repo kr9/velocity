@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from 'astro/types';
 import { cn } from '@/lib/cn';
 import { generateId } from '@/lib/utils';
+import { textareaVariants } from './textarea.variants';
 
 interface Props extends HTMLAttributes<'textarea'> {
   label?: string;
@@ -24,20 +25,9 @@ const {
 
 const textareaId = id || generateId('textarea');
 
-const sizes = {
-  sm: 'px-3 py-2 text-sm',
-  md: 'px-4 py-3 text-sm',
-  lg: 'px-4 py-3 text-base',
-};
-
 const textareaStyles = cn(
-  'w-full rounded-lg border bg-background resize-y min-h-[80px]',
-  'transition-colors duration-[--transition-fast]',
-  'placeholder:text-muted-foreground',
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-  'disabled:cursor-not-allowed disabled:opacity-50',
-  error ? 'border-destructive focus-visible:ring-destructive' : 'border-border',
-  sizes[size]
+  textareaVariants({ size }),
+  error && 'border-destructive focus-visible:ring-destructive'
 );
 ---
 

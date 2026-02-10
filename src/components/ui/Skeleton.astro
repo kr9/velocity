@@ -4,6 +4,7 @@
  * Loading placeholder with pulse animation
  */
 import { cn } from '@/lib/cn';
+import { skeletonVariants } from './skeleton.variants';
 
 interface Props {
   variant?: 'default' | 'circular' | 'text';
@@ -21,12 +22,6 @@ const {
   class: className,
 } = Astro.props;
 
-const variants = {
-  default: 'rounded-md',
-  circular: 'rounded-full',
-  text: 'rounded h-4',
-};
-
 const style = [
   width && `width: ${width}`,
   height && `height: ${height}`,
@@ -34,12 +29,7 @@ const style = [
 ---
 
 <div
-  class={cn(
-    'bg-secondary',
-    variants[variant],
-    animated && 'animate-pulse',
-    className
-  )}
+  class={cn(skeletonVariants({ variant, animated }), className)}
   style={style || undefined}
   aria-hidden="true"
   role="presentation"

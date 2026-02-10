@@ -1,17 +1,16 @@
 import { type HTMLAttributes, type Ref, type ReactNode } from 'react';
 import { cn } from '@/lib/cn';
+import { cardVariants, type CardVariants } from './card.variants';
 
-type CardPadding = 'none' | 'sm' | 'md' | 'lg';
 type CardShadow = 'none' | 'sm' | 'md' | 'lg';
-type CardVariant = 'default' | 'solid' | 'outline' | 'ghost' | 'elevated';
 
 interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, 'ref'> {
   ref?: Ref<HTMLDivElement>;
-  padding?: CardPadding;
+  padding?: CardVariants['padding'];
   shadow?: CardShadow;
   hover?: boolean;
   /** Visual style variant */
-  variant?: CardVariant;
+  variant?: CardVariants['variant'];
   /** Icon element to display in the card header */
   icon?: ReactNode;
   /** Card title */
@@ -24,26 +23,11 @@ interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, 'ref'> {
   structured?: boolean;
 }
 
-const paddings: Record<CardPadding, string> = {
-  none: '',
-  sm: 'p-4',
-  md: 'p-6',
-  lg: 'p-8',
-};
-
 const shadows: Record<CardShadow, string> = {
   none: '',
   sm: 'shadow-sm',
   md: 'shadow-md',
   lg: 'shadow-lg',
-};
-
-const variants: Record<CardVariant, string> = {
-  default: 'bg-card border border-border',
-  solid: 'bg-secondary border border-transparent',
-  outline: 'bg-transparent border-2 border-border',
-  ghost: 'bg-transparent border border-transparent',
-  elevated: 'bg-card border border-border shadow-lg',
 };
 
 export function Card({
@@ -62,17 +46,8 @@ export function Card({
   ...props
 }: CardProps) {
   const cardStyles = cn(
-    'rounded-xl',
-    'transition-all duration-200 ease-out',
-    variants[variant],
-    paddings[padding],
+    cardVariants({ variant, padding, hover }),
     shadows[shadow],
-    hover && [
-      'cursor-pointer',
-      'hover:border-border-strong',
-      'hover:shadow-md',
-      'hover:-translate-y-0.5',
-    ],
     className
   );
 

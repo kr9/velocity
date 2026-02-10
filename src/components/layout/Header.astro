@@ -22,6 +22,7 @@
 import type { HTMLAttributes } from 'astro/types';
 import { cn } from '@/lib/cn';
 import { getNavRoutes, type NavRoute } from '@/config/routes';
+import { headerVariants, headerInnerVariants } from './header.variants';
 import Button from '@/components/ui/Button.astro';
 import Icon from '@/components/ui/Icon.astro';
 import Logo from '@/components/ui/Logo.astro';
@@ -119,39 +120,11 @@ const hasNavSlot = Astro.slots.has('nav');
 const hasActionsSlot = Astro.slots.has('actions');
 const hasMobileMenuSlot = Astro.slots.has('mobile-menu');
 
-// Position variants
-const positions: Record<NonNullable<Props['position']>, string> = {
-  fixed: 'fixed top-0 left-0 right-0',
-  sticky: 'sticky top-0',
-  static: 'relative',
-};
-
-// Size variants (height)
-const sizes: Record<NonNullable<Props['size']>, string> = {
-  sm: 'h-12', // 48px - compact
-  md: 'h-14', // 56px - balanced
-  lg: 'h-16', // 64px - spacious
-};
-
-// Background variants
-const variants: Record<NonNullable<Props['variant']>, string> = {
-  default: 'bg-background/80 backdrop-blur-lg border-b border-border/50',
-  solid: 'bg-background border-b border-border',
-  transparent: 'bg-transparent',
-};
-
-// Layout-specific container classes
-const containerClasses: Record<NonNullable<Props['layout']>, string> = {
-  default: 'flex items-center justify-between',
-  centered: 'flex items-center justify-between',
-  minimal: 'flex items-center justify-between',
-};
-
 // Compute header classes
-const headerClasses = cn('z-50 w-full', positions[position], variants[variant], className);
+const headerClasses = cn(headerVariants({ position, variant }), isInvert && 'invert-section', className);
 
 // Compute inner container classes
-const innerClasses = cn('mx-auto max-w-6xl px-6', sizes[size], containerClasses[layout]);
+const innerClasses = headerInnerVariants({ size });
 
 // Check if a nav item is active
 function isActive(href: string): boolean {
@@ -203,16 +176,8 @@ const buttonId = `${menuId}-button`;
                   'nav-link rounded-md px-3 py-2 text-sm',
                   'transition-all duration-[--transition-fast]',
                   isActive(href)
-                    ? cn(
-                        'nav-link-active font-semibold',
-                        isInvert ? 'text-on-invert bg-white/10' : 'text-foreground bg-secondary'
-                      )
-                    : cn(
-                        'nav-link-inactive font-medium',
-                        isInvert
-                          ? 'text-on-invert-secondary hover:text-on-invert hover:bg-white/10'
-                          : 'text-foreground-muted hover:text-foreground hover:bg-secondary/70'
-                      )
+                    ? 'nav-link-active font-semibold text-foreground bg-secondary'
+                    : 'nav-link-inactive font-medium text-foreground-muted hover:text-foreground hover:bg-secondary/70'
                 )}
                 aria-current={isActive(href) ? 'page' : undefined}
               >
@@ -236,7 +201,6 @@ const buttonId = `${menuId}-button`;
               <Button
                 variant="ghost"
                 size="sm"
-                colorScheme={colorScheme}
                 icon={action.iconOnly}
                 href={action.href}
                 target={action.target}
@@ -248,7 +212,7 @@ const buttonId = `${menuId}-button`;
             ))}
 
             {showCta && (
-              <Button size="sm" colorScheme={colorScheme} href={ctaHref} target="_blank">
+              <Button size="sm" href={ctaHref} target="_blank">
                 {cta.label}
               </Button>
             )}
@@ -264,9 +228,7 @@ const buttonId = `${menuId}-button`;
             id={buttonId}
             class={cn(
               'inline-flex items-center justify-center rounded-md p-2 md:hidden',
-              isInvert
-                ? 'text-on-invert-secondary hover:text-on-invert hover:bg-white/10'
-                : 'text-foreground-muted hover:text-foreground hover:bg-secondary',
+              'text-foreground-muted hover:text-foreground hover:bg-secondary',
               'transition-colors',
               'focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none'
             )}

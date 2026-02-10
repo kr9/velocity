@@ -2,12 +2,11 @@
 import type { HTMLAttributes } from 'astro/types';
 import { cn } from '@/lib/cn';
 import { isExternalUrl } from '@/lib/utils';
+import { buttonVariants } from './button.variants';
 
 interface Props extends HTMLAttributes<'button'> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'destructive';
   size?: 'sm' | 'md' | 'lg';
-  /** Color scheme - use 'invert' for dark backgrounds */
-  colorScheme?: 'default' | 'invert';
   loading?: boolean;
   fullWidth?: boolean;
   href?: string;
@@ -18,7 +17,6 @@ interface Props extends HTMLAttributes<'button'> {
 const {
   variant = 'primary',
   size = 'md',
-  colorScheme = 'default',
   loading = false,
   fullWidth = false,
   href,
@@ -29,8 +27,6 @@ const {
   ...attrs
 } = Astro.props;
 
-const isInvert = colorScheme === 'invert';
-
 // Auto-detect external URLs and apply appropriate attributes
 const isExternal = href ? isExternalUrl(href) : false;
 const linkTarget = target ?? (isExternal ? '_blank' : undefined);
@@ -38,91 +34,8 @@ const linkRel = isExternal ? 'noopener noreferrer' : undefined;
 
 const Element = href ? 'a' : 'button';
 
-const baseStyles = `
-  inline-flex items-center justify-center gap-2
-  font-medium
-  transition-all duration-150 ease-out
-  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
-  disabled:pointer-events-none disabled:opacity-50
-  [&_svg]:pointer-events-none [&_svg]:shrink-0
-`;
-
-const variants = {
-  primary: isInvert ? `
-    bg-on-invert text-surface-invert
-    hover:bg-on-invert/90
-    active:scale-[0.98]
-  ` : `
-    bg-foreground text-background
-    hover:bg-foreground/90
-    active:scale-[0.98]
-  `,
-  secondary: isInvert ? `
-    bg-white/10 text-on-invert
-    border border-white/20
-    hover:bg-white/20 hover:border-white/30
-    active:scale-[0.98]
-  ` : `
-    bg-secondary text-secondary-foreground
-    border border-border
-    hover:bg-secondary-hover hover:border-border-strong
-    active:scale-[0.98]
-  `,
-  outline: isInvert ? `
-    border border-white/30 bg-transparent
-    text-on-invert
-    hover:bg-white/10 hover:border-white/40
-    active:scale-[0.98]
-  ` : `
-    border border-border bg-transparent
-    text-foreground
-    hover:bg-secondary hover:border-border-strong
-    active:scale-[0.98]
-  `,
-  ghost: isInvert ? `
-    text-on-invert-secondary
-    hover:text-on-invert hover:bg-white/10
-    active:scale-[0.98]
-  ` : `
-    text-foreground-secondary
-    hover:text-foreground hover:bg-secondary
-    active:scale-[0.98]
-  `,
-  link: isInvert ? `
-    text-on-invert-secondary
-    hover:text-on-invert
-    underline-offset-4 hover:underline
-  ` : `
-    text-foreground-secondary
-    hover:text-foreground
-    underline-offset-4 hover:underline
-  `,
-  destructive: `
-    bg-[var(--destructive)] text-[var(--destructive-foreground)]
-    hover:bg-[var(--destructive)]/90
-    active:scale-[0.98]
-  `,
-};
-
-const sizes = {
-  sm: icon ? 'h-8 w-8' : 'h-8 px-3 text-xs rounded-md',
-  md: icon ? 'h-10 w-10' : 'h-10 px-4 text-sm rounded-md',
-  lg: icon ? 'h-12 w-12' : 'h-12 px-5 text-base rounded-md',
-};
-
-const iconSizes = {
-  sm: '[&_svg]:h-4 [&_svg]:w-4',
-  md: '[&_svg]:h-5 [&_svg]:w-5',
-  lg: '[&_svg]:h-5 [&_svg]:w-5',
-};
-
 const classes = cn(
-  baseStyles,
-  variants[variant],
-  sizes[size],
-  iconSizes[size],
-  icon && 'rounded-md',
-  fullWidth && 'w-full',
+  buttonVariants({ variant, size, fullWidth, icon }),
   className
 );
 ---

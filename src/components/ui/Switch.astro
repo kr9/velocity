@@ -1,0 +1,133 @@
+---
+/**
+ * Switch Component
+ * A toggle switch for binary on/off states.
+ * Uses a hidden checkbox for accessibility.
+ */
+import { cn } from '@/lib/cn';
+import { generateId } from '@/lib/utils';
+
+interface Props {
+  label?: string;
+  description?: string;
+  size?: 'sm' | 'md' | 'lg';
+  checked?: boolean;
+  disabled?: boolean;
+  name?: string;
+  value?: string;
+  class?: string;
+  id?: string;
+}
+
+const {
+  label,
+  description,
+  size = 'md',
+  checked = false,
+  disabled = false,
+  name,
+  value,
+  class: className,
+  id,
+} = Astro.props;
+
+const switchId = id || generateId('switch');
+
+const trackSizes = {
+  sm: 'h-5 w-9',
+  md: 'h-6 w-11',
+  lg: 'h-7 w-[3.25rem]',
+};
+
+const thumbSizes = {
+  sm: 'h-4 w-4',
+  md: 'h-5 w-5',
+  lg: 'h-6 w-6',
+};
+
+const thumbTranslate = {
+  sm: 'translate-x-4',
+  md: 'translate-x-5',
+  lg: 'translate-x-6',
+};
+---
+
+<div class={cn('flex items-start gap-3', className)}>
+  <label
+    for={switchId}
+    class={cn(
+      'relative inline-flex shrink-0 cursor-pointer items-center',
+      disabled && 'cursor-not-allowed opacity-50'
+    )}
+  >
+    <input
+      type="checkbox"
+      id={switchId}
+      class="peer sr-only"
+      checked={checked}
+      disabled={disabled}
+      name={name}
+      value={value}
+      role="switch"
+      aria-checked={checked ? 'true' : 'false'}
+    />
+    <!-- Track -->
+    <div
+      class={cn(
+        'rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out',
+        'bg-border-strong peer-checked:bg-foreground',
+        'peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background',
+        trackSizes[size]
+      )}
+    >
+      <!-- Thumb -->
+      <div
+        class={cn(
+          'rounded-full bg-background shadow-sm transition-transform duration-200 ease-in-out',
+          'translate-x-0',
+          `peer-checked:${thumbTranslate[size]}`,
+          thumbSizes[size]
+        )}
+        data-thumb
+      />
+    </div>
+  </label>
+
+  {(label || description) && (
+    <div class="grid gap-0.5">
+      {label && (
+        <label for={switchId} class={cn('text-sm font-medium text-foreground cursor-pointer', disabled && 'cursor-not-allowed')}>
+          {label}
+        </label>
+      )}
+      {description && (
+        <p class="text-xs text-foreground-subtle leading-normal">{description}</p>
+      )}
+    </div>
+  )}
+</div>
+
+<style>
+  /* Use :has() for checked state styling since peer classes don't work across elements */
+  label:has(input:checked) [data-thumb] {
+    --tw-translate-x: var(--switch-translate);
+  }
+  label:has(input:checked) > div {
+    background-color: var(--foreground);
+  }
+</style>
+
+<script>
+  function initSwitches() {
+    document.querySelectorAll('[role="switch"]').forEach((input) => {
+      if (input instanceof HTMLInputElement && !input.dataset.switchInit) {
+        input.dataset.switchInit = 'true';
+        input.addEventListener('change', () => {
+          input.setAttribute('aria-checked', input.checked ? 'true' : 'false');
+        });
+      }
+    });
+  }
+  initSwitches();
+  document.addEventListener('astro:page-load', initSwitches);
+</script>
