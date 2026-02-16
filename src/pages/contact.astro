@@ -11,6 +11,7 @@ import Input from '@/components/ui/form/Input/Input.astro';
 import Textarea from '@/components/ui/form/Textarea/Textarea.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import { Hero } from '@/components/hero';
+import GoogleMap from '@/components/ui/data-display/GoogleMap/GoogleMap.astro';
 import siteConfig from '@/config/site.config';
 ---
 
@@ -30,7 +31,7 @@ import siteConfig from '@/config/site.config';
     </p>
   </Hero>
 
-  <!-- Contact Form Section -->
+  <!-- Contact Section -->
   <section class="py-20 bg-surface-secondary">
     <div class="mx-auto max-w-6xl px-6">
       <div class="grid gap-12 lg:grid-cols-2">
@@ -86,52 +87,40 @@ import siteConfig from '@/config/site.config';
           </form>
         </Card>
 
-        <!-- Contact Info -->
-        <div class="flex flex-col justify-center">
-          <h2 class="font-display text-2xl font-bold text-foreground mb-8">
-            Other ways to reach us
-          </h2>
+        <!-- Right column: Map + Contact Info -->
+        <div class="flex flex-col gap-8">
+          {/* Map */}
+          <GoogleMap
+            size="sm"
+            ariaLabel={`Map showing ${siteConfig.name} location`}
+            placeholderTitle="Our Location"
+          />
 
-          <div class="space-y-6">
-            <!-- Email -->
-            <a href={`mailto:${siteConfig.email}`} class="block">
-              <Card hover padding="sm">
-                <div class="flex items-center gap-4">
-                  <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
-                    <Icon name="mail" size="md" />
-                  </div>
-                  <div>
-                    <p class="text-sm text-foreground-muted">Email</p>
-                    <p class="font-medium text-foreground">{siteConfig.email}</p>
-                  </div>
-                </div>
-              </Card>
-            </a>
+          {/* Contact Info */}
+          <div>
+            <h2 class="font-display text-2xl font-bold text-foreground mb-6">
+              Other ways to reach us
+            </h2>
 
-            <!-- GitHub -->
-            <a
-              href="https://github.com/southwellmedia/velocity"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block"
-            >
-              <Card hover padding="sm">
-                <div class="flex items-center gap-4">
-                  <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
-                    <Icon name="github" size="md" />
+            <div class="space-y-4">
+              <!-- Email -->
+              <a href={`mailto:${siteConfig.email}`} class="block">
+                <Card hover padding="sm">
+                  <div class="flex items-center gap-4">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                      <Icon name="mail" size="md" />
+                    </div>
+                    <div>
+                      <p class="text-sm text-foreground-muted">Email</p>
+                      <p class="font-medium text-foreground">{siteConfig.email}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p class="text-sm text-foreground-muted">GitHub</p>
-                    <p class="font-medium text-foreground">velocity</p>
-                  </div>
-                </div>
-              </Card>
-            </a>
+                </Card>
+              </a>
 
-            <!-- Twitter -->
-            {siteConfig.twitter && (
+              <!-- GitHub -->
               <a
-                href={`https://twitter.com/${siteConfig.twitter.site.replace('@', '')}`}
+                href="https://github.com/southwellmedia/velocity"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="block"
@@ -139,16 +128,38 @@ import siteConfig from '@/config/site.config';
                 <Card hover padding="sm">
                   <div class="flex items-center gap-4">
                     <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
-                      <Icon name="twitter" size="md" />
+                      <Icon name="github" size="md" />
                     </div>
                     <div>
-                      <p class="text-sm text-foreground-muted">Twitter</p>
-                      <p class="font-medium text-foreground">{siteConfig.twitter.site}</p>
+                      <p class="text-sm text-foreground-muted">GitHub</p>
+                      <p class="font-medium text-foreground">velocity</p>
                     </div>
                   </div>
                 </Card>
               </a>
-            )}
+
+              <!-- Twitter -->
+              {siteConfig.twitter && (
+                <a
+                  href={`https://twitter.com/${siteConfig.twitter.site.replace('@', '')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block"
+                >
+                  <Card hover padding="sm">
+                    <div class="flex items-center gap-4">
+                      <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                        <Icon name="twitter" size="md" />
+                      </div>
+                      <div>
+                        <p class="text-sm text-foreground-muted">Twitter</p>
+                        <p class="font-medium text-foreground">{siteConfig.twitter.site}</p>
+                      </div>
+                    </div>
+                  </Card>
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </div>
