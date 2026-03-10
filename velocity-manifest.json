@@ -139,6 +139,30 @@
       "description": "All Astro packages have moved from beta to stable: astro 6.0.0, @astrojs/mdx 5.0.0, @astrojs/react 5.0.0. Run `pnpm install && pnpm build` to verify compatibility. No code changes should be needed — this is a dependency-only upgrade.",
       "fromVersion": "0.5.0-beta",
       "toVersion": "1.0.0"
+    },
+    {
+      "title": "Restore --color-background-deep if used",
+      "description": "The CSS variable `--color-background-deep` was removed from global.css, default.css, and midnight.css. If your components reference this token (e.g., Showcase, MarketingFooter), add it back to your theme files: `--color-background-deep: oklch(0.13 0.02 260);`",
+      "pattern": "--color-background-deep",
+      "searchPaths": ["src/"],
+      "fromVersion": "0.5.0-beta",
+      "toVersion": "1.0.0"
+    },
+    {
+      "title": "Restore heading font-size rules if needed",
+      "description": "Base `h1`–`h6` font-size rules were removed from global.css. If your pages rely on these global heading sizes rather than Tailwind utility classes, add them back to your own stylesheet.",
+      "pattern": "<h[1-6]",
+      "searchPaths": ["src/pages/", "src/components/landing/", "src/content/"],
+      "fromVersion": "0.5.0-beta",
+      "toVersion": "1.0.0"
+    },
+    {
+      "title": "Header max-width changed from max-w-6xl to max-w-4xl",
+      "description": "The floating header variant changed its max-width from `max-w-6xl` to `max-w-4xl`. If your layout depends on the wider header, override this in your Header component or layout.",
+      "pattern": "max-w-6xl",
+      "searchPaths": ["src/components/layout/", "src/layouts/"],
+      "fromVersion": "0.5.0-beta",
+      "toVersion": "1.0.0"
     }
   ]
 }
