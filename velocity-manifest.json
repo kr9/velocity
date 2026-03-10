@@ -1,6 +1,6 @@
 {
-  "version": "0.5.0-beta",
-  "minCliVersion": "1.7.0",
+  "version": "1.0.0",
+  "minCliVersion": "1.8.0",
   "files": {
     "safe": [
       "src/components/ui/",
@@ -38,10 +38,10 @@
   },
   "dependencies": {
     "update": {
-      "astro": "6.0.0-beta.20",
-      "@astrojs/mdx": "5.0.0-beta.12",
-      "@astrojs/react": "5.0.0-beta.4",
-      "@astrojs/check": "0.9.7-beta.1",
+      "astro": "6.0.0",
+      "@astrojs/mdx": "5.0.0",
+      "@astrojs/react": "5.0.0",
+      "@astrojs/check": "0.9.7",
       "vitest": "^3.2.0"
     },
     "remove": ["zod", "astro-seo"],
@@ -127,6 +127,18 @@
       "description": "Astro 6 bundles Vite 7, which requires Vitest 3.2+. The dependency update handles the version bump, but if you have a vitest.config.ts or custom Vitest configuration, review the Vitest 3 migration guide: https://vitest.dev/guide/migration.html",
       "fromVersion": "0.4.0-beta",
       "toVersion": "0.5.0-beta"
+    },
+    {
+      "title": "Verify @astrojs/check stable compatibility",
+      "description": "The @astrojs/check package has been upgraded from 0.9.7-beta.1 to 0.9.7 stable. Run `pnpm check` to verify your project passes type checking with the stable release.",
+      "fromVersion": "0.5.0-beta",
+      "toVersion": "1.0.0"
+    },
+    {
+      "title": "Confirm all beta packages are replaced with stable releases",
+      "description": "All Astro packages have moved from beta to stable: astro 6.0.0, @astrojs/mdx 5.0.0, @astrojs/react 5.0.0. Run `pnpm install && pnpm build` to verify compatibility. No code changes should be needed — this is a dependency-only upgrade.",
+      "fromVersion": "0.5.0-beta",
+      "toVersion": "1.0.0"
     }
   ]
 }
