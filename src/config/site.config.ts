@@ -24,63 +24,39 @@ export interface SiteConfig {
     google?: string;
     bing?: string;
   };
-  /**
-   * Branding configuration
-   * Logo files: Replace SVGs in src/assets/branding/
-   * Favicon: Replace in public/favicon.svg
-   */
   branding: {
-    /** Logo alt text for accessibility */
     logo: {
       alt: string;
     };
-    /** Favicon path (lives in public/) */
     favicon: {
       svg: string;
     };
-    /** Theme colors for manifest and browser UI */
     colors: {
-      /** Browser toolbar color (hex) */
       themeColor: string;
-      /** PWA splash screen background (hex) */
       backgroundColor: string;
     };
   };
 }
 
 const siteConfig: SiteConfig = {
-  name: 'Velocity',
-  description: 'A modern website built with Astro and Tailwind CSS',
-  url: SITE_URL || 'https://example.com',
+  name: 'Kamal Rupareliya',
+  description: 'Ideas, insights and stories.',
+  url: SITE_URL || 'https://k.rupareliya.com',
   ogImage: '/og-default.png',
-  author: 'Southwell Media',
-  // Demo contact info - replace with your actual business details
-  email: 'hello@example.com',
-  phone: '+1 (555) 123-4567',
-  address: {
-    street: '123 Main St',
-    city: 'Dallas',
-    state: 'TX',
-    zip: '75001',
-    country: 'US',
-  },
+  author: 'Kamal Rupareliya',
+  email: 'hello@rupareliya.com',
   socialLinks: [
-    'https://github.com/southwellmedia',
+    'https://github.com/kamalrupareliya',
+    'https://twitter.com/kamalrupareliya',
+    'https://www.linkedin.com/in/kamalrupareliya',
   ],
-  // Twitter metadata - update with your actual handles or remove
-  // twitter: {
-  //   site: '@yourhandle',
-  //   creator: '@yourhandle',
-  // },
   verification: {
     google: GOOGLE_SITE_VERIFICATION,
     bing: BING_SITE_VERIFICATION,
   },
-  // Branding: Logo files live in src/assets/branding/
-  // Replace the SVG files there with your own branding
   branding: {
     logo: {
-      alt: 'Velocity',
+      alt: 'Kamal Rupareliya',
     },
     favicon: {
       svg: '/favicon.svg',

@@ -1,66 +1,60 @@
 ---
-import LandingLayout from '@/layouts/LandingLayout.astro';
-import { Hero } from '@/components/hero';
-import Button from '@/components/ui/form/Button/Button.astro';
-import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import BlogCard from '@/components/blog/BlogCard.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
-import SocialProof from '@/components/ui/marketing/SocialProof/SocialProof.astro';
-import { TerminalDemo } from '@/components/ui/marketing/TerminalDemo';
-import TechStack from '@/components/landing/TechStack.astro';
-import FeatureTabs from '@/components/landing/FeatureTabs.tsx';
-import LighthouseScores from '@/components/landing/LighthouseScores.astro';
-import Credibility from '@/components/landing/Credibility.astro';
-import CTA from '@/components/landing/CTA.astro';
+import { Hero } from '@/components/hero';
+import { getCollection } from 'astro:content';
+import siteConfig from '@/config/site.config';
+
+const allPosts = await getCollection('blog', ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true;
+});
+
+const posts = allPosts
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+  .slice(0, 8);
 ---
 
-<LandingLayout
-  title="The Complete Astro Starter"
-  description="Design tokens, accessible components, SEO, and i18n configured from the first commit. Velocity ships what other starters leave as homework."
->
-  <Hero layout="split" size="lg" showGrid showBlob blobPosition="right">
-    <Badge slot="badge" pill pulse>v1.0 Public Beta is Live</Badge>
+<BaseLayout title={siteConfig.name} description={siteConfig.description} includeOrgSchema>
+  <Header slot="header" position="fixed" size="lg" showActiveState />
 
-    <h1 slot="title">
-      Your next site <span class="text-brand-500">starts here.</span>
-    </h1>
-
-    <p slot="description">
-      Design tokens, accessible components, SEO, and i18n configured from the first commit. Velocity
-      ships what other starters leave as homework.
-    </p>
-
-    <Fragment slot="actions">
-      <Button size="lg" href="https://docs.deployvelocity.com" target="_blank">
-        View Docs
-        <Icon name="arrow-right" size="sm" />
-      </Button>
-      <Button
-        size="lg"
-        variant="outline"
-        href="https://github.com/southwellmedia/velocity"
-        target="_blank"
-      >
-        <Icon name="github" size="sm" />
-        View on GitHub
-      </Button>
-    </Fragment>
-
-    <TerminalDemo slot="aside" client:load />
-
-    <SocialProof
-      class="mt-[var(--space-stack-lg)]"
-      text="Shipped to production weekly."
-      avatars={[
-        'https://i.pravatar.cc/150?img=12',
-        'https://i.pravatar.cc/150?img=33',
-        'https://www.southwellmedia.com/_vercel/image?url=%2Fassets%2FMichaelFroseth2025.jpg&w=828&q=90',
-      ]}
-    />
+  <Hero layout="centered" size="md" showGrid>
+    <h1 slot="title">{siteConfig.name}</h1>
+    <p slot="description">{siteConfig.description}</p>
   </Hero>
 
-  <TechStack />
-  <FeatureTabs client:visible />
-  <LighthouseScores />
-  <Credibility />
-  <CTA />
-</LandingLayout>
+  <section class="bg-background-secondary py-16">
+    <div class="mx-auto max-w-6xl px-6">
+      <h2 class="font-display text-foreground mb-8 text-2xl font-bold">Recent posts</h2>
+
+      {
+        posts.length > 0 ? (
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {posts.map((post) => (
+              <BlogCard
+                title={post.data.title}
+                description={post.data.description}
+                href={`/blog/${post.id}`}
+                publishedAt={post.data.publishedAt}
+                tags={post.data.tags}
+                author={post.data.author}
+                image={post.data.image}
+              />
+            ))}
+          </div>
+        ) : (
+          <div class="py-16 text-center">
+            <div class="bg-background mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+              <Icon name="file-text" size="lg" class="text-foreground-muted" />
+            </div>
+            <p class="text-foreground-muted text-lg">No posts yet — check back soon.</p>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <Footer slot="footer" layout="simple" background="secondary" />
+</BaseLayout>

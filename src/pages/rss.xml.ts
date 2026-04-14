@@ -22,18 +22,15 @@ function formatRfc822Date(date: Date): string {
 }
 
 export async function GET(context: APIContext) {
-  // Get only English, non-draft posts for RSS
-  const posts = await getCollection('blog', ({ data }) =>
-    data.locale === 'en' && !data.draft
-  );
+  // Get only non-draft posts for RSS
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
 
   // Sort posts by date (newest first)
   const sortedPosts = posts.sort(
     (a, b) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime()
   );
 
-  // Generate slug from post id (remove 'en/' prefix)
-  const getSlug = (id: string) => id.replace('en/', '');
+  const getSlug = (id: string) => id;
 
   const site = context.site?.toString() ?? siteConfig.url;
   const siteUrl = site.endsWith('/') ? site.slice(0, -1) : site;

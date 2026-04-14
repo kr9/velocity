@@ -9,7 +9,6 @@ const STATIC_PAGES = [
   { slug: 'about', title: 'About', description: `Learn more about ${siteConfig.name}` },
   { slug: 'contact', title: 'Contact', description: `Get in touch with ${siteConfig.name}` },
   { slug: 'blog', title: 'Blog', description: `Latest articles and updates from ${siteConfig.name}` },
-  { slug: 'components', title: 'Component Library', description: 'UI component showcase' },
 ];
 
 export const getStaticPaths: GetStaticPaths = async () => {
