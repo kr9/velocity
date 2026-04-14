@@ -8,6 +8,7 @@ imageAlt: 'Remote house with privacy networking setup'
 tags: ['networking', 'privacy', 'router', 'vpn', 'wifi']
 draft: false
 featured: false
+category: 'Technology'
 ---
 
 The ISPs are doing everything in their power to compel us to do a lot of work to protect our privacy. Fortunately, if we put some effort, we can protect our privacy and also make a dent in their attempt.

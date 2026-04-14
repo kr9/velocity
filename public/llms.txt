@@ -1,0 +1,30 @@
+# Kamal Rupareliya
+
+> Personal blog by Kamal Rupareliya — ideas, insights, and stories on entrepreneurship, philosophy, technology, and well-being.
+
+## Blog
+
+- [Blog index](https://k.rupareliya.com/blog): All posts
+- [RSS feed](https://k.rupareliya.com/rss.xml): Subscribe to new posts
+
+## Posts
+
+- [Next universal civil war will be for data freedom](https://k.rupareliya.com/blog/next-universal-civil-war-will-be-for-data-freedom/): Why the next major conflict is over who controls personal data.
+- [Where is Apple's innovation?](https://k.rupareliya.com/blog/where-is-apple-innovation/): A critical look at whether Apple still leads on product innovation.
+- [Why keeping track of our successes matters](https://k.rupareliya.com/blog/why-keeping-track-of-our-successes-is-more-important-than-anything-else/): The case for celebrating wins, not just tracking failures.
+- [The ultimate 2-hour networking setup that protects your privacy](https://k.rupareliya.com/blog/the-ultimate-2-hour-networking-setup-that-protects-your-privacy/): A practical home networking setup for privacy and security.
+- [9 ways to keep employees motivated besides money](https://k.rupareliya.com/blog/9-ways-to-keep-employees-motivated-besides-money/): Non-monetary drivers of employee motivation and retention.
+- [Happy employees work better — part 1](https://k.rupareliya.com/blog/happy-employees-work-better-part-1-what-it-means-for-organizational-productivity/): What employee happiness means for organizational productivity.
+- [Happy employees work better — part 2](https://k.rupareliya.com/blog/happy-employees-work-better-part-2-what-it-means-for-your-growth/): What employee happiness means for your personal growth.
+- [How to find an authentic yoga teacher training institute in India](https://k.rupareliya.com/blog/how-to-find-an-authentic-yoga-teacher-training-institute-in-india/): A guide for choosing a genuine yoga training program.
+- [Simplifying mysteries and benefits of yogic breathing](https://k.rupareliya.com/blog/simplifying-mysteries-and-benefits-of-yogic-breathing/): An accessible introduction to pranayama and breathwork.
+
+## About
+
+- [About](https://k.rupareliya.com/about): About Kamal Rupareliya
+
+## Contact
+
+- Email: hello@rupareliya.com
+- GitHub: https://github.com/kamalrupareliya
+- LinkedIn: https://www.linkedin.com/in/kamalrupareliya

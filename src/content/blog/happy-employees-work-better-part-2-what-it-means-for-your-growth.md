@@ -8,6 +8,7 @@ imageAlt: 'Person smiling at work'
 tags: ['employee-engagement', 'happiness', 'motivation', 'success', 'wellness']
 draft: false
 featured: false
+category: 'Business'
 ---
 
 _This is a continuation of part 1:_ [Happy employees work better: what it means for organizational productivity](/blog/happy-employees-work-better-part-1-what-it-means-for-organizational-productivity/)

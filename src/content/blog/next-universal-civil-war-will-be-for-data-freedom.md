@@ -8,6 +8,7 @@ imageAlt: 'Abstract representation of data and privacy'
 tags: ['big-data', 'data', 'future', 'privacy']
 draft: false
 featured: false
+category: 'Technology'
 ---
 
 Future data will be more personal than ever. A closer look at the impact of unauthorized data collection by corporations and government agencies.

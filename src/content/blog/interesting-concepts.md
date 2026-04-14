@@ -6,6 +6,7 @@ author: 'Kamal Rupareliya'
 tags: ['ideas', 'concepts']
 draft: true
 featured: false
+category: 'Philosophy'
 ---
 
 ## How willpower works and how you can use it to your advantage

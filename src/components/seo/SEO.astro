@@ -6,11 +6,13 @@ interface Props {
   description?: string;
   image?: string;
   imageAlt?: string;
+  canonicalUrl?: string;
   article?: {
     publishedTime?: Date;
     modifiedTime?: Date;
     authors?: string[];
     tags?: string[];
+    category?: string;
   };
   noindex?: boolean;
   nofollow?: boolean;
@@ -21,6 +23,7 @@ const {
   description = siteConfig.description,
   image,
   imageAlt,
+  canonicalUrl,
   article,
   noindex = false,
   nofollow = false,
@@ -28,7 +31,7 @@ const {
 
 const pageTitle = title ? `${title} — ${siteConfig.name}` : siteConfig.name;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = canonicalUrl ? new URL(canonicalUrl) : new URL(Astro.url.pathname, Astro.site);
 
 // Process image - use dynamic OG image if no custom image provided
 let ogImage: string;
@@ -71,6 +74,7 @@ const ogImageType = isGeneratedOgImage ? 'image/png' : getImageType(ogImage);
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL.toString()} />
 <meta name="robots" content={robotsContent} />
+{article?.authors?.[0] && <meta name="author" content={article.authors[0]} />}
 
 <!-- Open Graph -->
 <meta property="og:title" content={pageTitle} />
@@ -87,9 +91,10 @@ const ogImageType = isGeneratedOgImage ? 'image/png' : getImageType(ogImage);
 
 <!-- Article Metadata -->
 {article?.publishedTime && <meta property="article:published_time" content={article.publishedTime.toISOString()} />}
-{article?.modifiedTime && <meta property="article:modified_time" content={article.modifiedTime.toISOString()} />}
+{article?.publishedTime && <meta property="article:modified_time" content={(article.modifiedTime ?? article.publishedTime).toISOString()} />}
 {article?.authors?.map((author) => <meta property="article:author" content={author} />)}
 {article?.tags?.map((tag) => <meta property="article:tag" content={tag} />)}
+{article?.category && <meta property="article:section" content={article.category} />}
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />

@@ -5,7 +5,7 @@ import JsonLd from '@/components/seo/JsonLd.astro';
 import ConsentBanner from '@/components/ui/overlay/ConsentBanner';
 import { ClientRouter } from 'astro:transitions';
 import { createWebsiteSchema, createOrganizationSchema } from '@/lib/schema';
-import type { WebSite, Organization, WithContext } from 'schema-dts';
+import type { WebSite, Organization, Thing, WithContext } from 'schema-dts';
 import siteConfig from '@/config/site.config';
 
 interface Props {
@@ -13,15 +13,18 @@ interface Props {
   description?: string;
   image?: string;
   imageAlt?: string;
+  canonicalUrl?: string;
   article?: {
     publishedTime?: Date;
     modifiedTime?: Date;
     authors?: string[];
     tags?: string[];
+    category?: string;
   };
   noindex?: boolean;
   nofollow?: boolean;
   includeOrgSchema?: boolean;
+  additionalSchemas?: WithContext<Thing>[];
 }
 
 const {
@@ -29,17 +32,20 @@ const {
   description,
   image,
   imageAlt,
+  canonicalUrl,
   article,
   noindex = false,
   nofollow = false,
   includeOrgSchema = false,
+  additionalSchemas = [],
 } = Astro.props;
 
 // Build JSON-LD schemas
-const schemas: Array<WithContext<WebSite> | WithContext<Organization>> = [createWebsiteSchema()];
+const schemas: WithContext<Thing>[] = [createWebsiteSchema()];
 if (includeOrgSchema) {
   schemas.push(createOrganizationSchema());
 }
+schemas.push(...additionalSchemas);
 ---
 
 <!doctype html>
@@ -60,6 +66,7 @@ if (includeOrgSchema) {
       description={description}
       image={image}
       imageAlt={imageAlt}
+      canonicalUrl={canonicalUrl}
       article={article}
       noindex={noindex}
       nofollow={nofollow}

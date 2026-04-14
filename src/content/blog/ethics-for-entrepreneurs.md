@@ -6,6 +6,7 @@ author: 'Kamal Rupareliya'
 tags: ['entrepreneurship', 'ethics', 'business']
 draft: true
 featured: false
+category: 'Business'
 ---
 
 When you're an entrepreneur, sometimes you find yourself in a position where there are ethical issues that you need to address. But more importantly, ethics are critical when it comes to making good business decisions. Here's what you need to know about business ethics that every entrepreneur should be aware of.

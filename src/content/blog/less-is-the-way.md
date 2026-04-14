@@ -6,6 +6,7 @@ author: 'Kamal Rupareliya'
 tags: ['minimalism', 'philosophy']
 draft: true
 featured: false
+category: 'Philosophy'
 ---
 
 Less eating.

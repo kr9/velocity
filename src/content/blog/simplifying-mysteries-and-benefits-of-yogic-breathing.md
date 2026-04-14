@@ -8,6 +8,7 @@ imageAlt: 'Person practicing yogic breathing'
 tags: ['yoga', 'yogic-breathing', 'meditation', 'hatha', 'benefits']
 draft: false
 featured: false
+category: 'Yoga'
 ---
 
 ![](../../assets/images/wp/Breathing-Main3-1-scaled-1-1024x683.jpg)

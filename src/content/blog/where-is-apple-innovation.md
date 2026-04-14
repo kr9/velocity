@@ -8,6 +8,7 @@ imageAlt: 'iPhone concept image'
 tags: ['apple', 'innovation', 'iphone', 'iphone8', 'steve-jobs']
 draft: false
 featured: false
+category: 'Technology'
 ---
 
 Apple is lacking significant innovation for the past few years. I feel innovation is stagnant and even declining at Apple.

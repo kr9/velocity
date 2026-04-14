@@ -50,6 +50,10 @@ const siteConfig: SiteConfig = {
     'https://twitter.com/kamalrupareliya',
     'https://www.linkedin.com/in/kamalrupareliya',
   ],
+  twitter: {
+    site: '@kamalrupareliya',
+    creator: '@kamalrupareliya',
+  },
   verification: {
     google: GOOGLE_SITE_VERIFICATION,
     bing: BING_SITE_VERIFICATION,

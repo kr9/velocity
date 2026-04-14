@@ -8,6 +8,7 @@ imageAlt: 'Person celebrating success'
 tags: ['growth', 'happiness', 'motivation', 'success']
 draft: false
 featured: false
+category: 'Personal Growth'
 ---
 
 Just a thought of our past success can increase the serotonin. The more you win, the more you will like to win. It is the momentum that allows us to move forward even if all the odds are against us.

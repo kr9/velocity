@@ -8,6 +8,7 @@ imageAlt: 'People working together in an office'
 tags: ['employee-engagement', 'growth', 'motivation', 'wellness']
 draft: false
 featured: false
+category: 'Business'
 ---
 
 Your organization's profitability is largely dependent on employee enthusiasm, productivity, and loyalty. Therefore, you need to spend at least as much time creating an engaging ecosystem as you do while hiring new talent.

@@ -8,6 +8,7 @@ imageAlt: 'Yoga practice in India'
 tags: ['india', 'meditation', 'teacher-training', 'traditional', 'yoga']
 draft: false
 featured: false
+category: 'Yoga'
 ---
 
 ![](../../assets/images/wp/IMG_5343-1-scaled-1-894x1024.jpg)

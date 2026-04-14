@@ -8,6 +8,7 @@ imageAlt: 'Team working happily together'
 tags: ['employee-engagement', 'growth', 'happiness', 'motivation', 'productivity', 'wellness']
 draft: false
 featured: false
+category: 'Business'
 ---
 
 Many theories and surveys have proved that personal happiness has a direct impact on your workplace productivity. Happy and satisfied employees are known to spike productivity by a significant amount. In fact, personal happiness is the most important factor to enhance your workplace productivity.
