@@ -22,7 +22,8 @@ INPUT  = os.path.join(BASE, 'src/assets/branding/kiconv4.png')
 OUTDIR = os.path.join(BASE, 'src/assets/branding')
 
 # ── Brand colours ─────────────────────────────────────────────────────────────
-ICON_COLOR  = '#ccc922'   # olive-yellow from the original PNG
+ICON_COLOR  = '#965496'   # accent (light bg)
+ICON_COLOR_DARK = '#B87AB8'  # accent (dark bg)
 TEXT_DARK   = '#1C1C1E'   # foreground on light background
 TEXT_LIGHT  = '#F2F2F2'   # foreground on dark background
 
@@ -163,9 +164,9 @@ def full_svg(icon_fill, text_fill):
 # ── Write files ───────────────────────────────────────────────────────────────
 outputs = {
     'logomark.svg':       mark_svg(ICON_COLOR),
-    'logomark-dark.svg':  mark_svg(ICON_COLOR),
+    'logomark-dark.svg':  mark_svg(ICON_COLOR_DARK),
     'logo-full.svg':      full_svg(ICON_COLOR, TEXT_DARK),
-    'logo-full-dark.svg': full_svg(ICON_COLOR, TEXT_LIGHT),
+    'logo-full-dark.svg': full_svg(ICON_COLOR_DARK, TEXT_LIGHT),
 }
 
 for name, content in outputs.items():
