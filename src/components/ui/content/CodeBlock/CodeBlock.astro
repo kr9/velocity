@@ -27,9 +27,9 @@ const codeId = `code-${Math.random().toString(36).slice(2, 9)}`;
   <div class="flex items-center justify-between border-b border-border bg-card px-4 py-2.5">
     <div class="flex items-center gap-3">
       <div class="flex gap-1.5">
-        <div class="h-2.5 w-2.5 rounded-full bg-gray-300 dark:bg-gray-600"></div>
-        <div class="h-2.5 w-2.5 rounded-full bg-gray-300 dark:bg-gray-600"></div>
-        <div class="h-2.5 w-2.5 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+        <div class="h-2.5 w-2.5 rounded-full bg-border-strong"></div>
+        <div class="h-2.5 w-2.5 rounded-full bg-border-strong"></div>
+        <div class="h-2.5 w-2.5 rounded-full bg-border-strong"></div>
       </div>
       {filename && (
         <span class="text-xs font-medium text-foreground-muted font-sans">{filename}</span>
@@ -37,7 +37,7 @@ const codeId = `code-${Math.random().toString(36).slice(2, 9)}`;
     </div>
     <button
       type="button"
-      class="copy-button flex items-center gap-1.5 rounded px-2 py-0.5 text-xs font-medium text-foreground-muted transition-colors hover:bg-secondary hover:text-foreground focus:outline-none"
+      class="copy-button flex items-center gap-1.5 rounded px-2 py-0.5 text-xs font-medium text-foreground-muted transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
       data-code-id={codeId}
       aria-label="Copy code to clipboard"
     >

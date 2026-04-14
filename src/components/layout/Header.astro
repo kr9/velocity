@@ -602,13 +602,13 @@ const buttonId = `${menuId}-button`;
 
   /* ===== CTA: invert color flip ===== */
   [data-header-shape="floating"][data-header-color-scheme="invert"] .hdr-invert-cta {
-    background: white;
-    color: #111;
+    background: var(--on-invert);
+    color: var(--surface-invert);
     border-color: transparent;
     transition: background 300ms, color 300ms, border-color 300ms;
   }
   [data-header-shape="floating"][data-header-color-scheme="invert"] .hdr-invert-cta:hover {
-    background: rgba(255, 255, 255, 0.9);
+    background: color-mix(in srgb, var(--on-invert) 90%, transparent);
   }
   [data-header-shape="floating"][data-header-color-scheme="invert"][data-scrolled] .hdr-invert-cta {
     background: var(--color-primary);

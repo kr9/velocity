@@ -372,15 +372,9 @@
   /* Grid pattern - for hero sections (matches the React design) */
   .bg-grid-pattern {
     background-image:
-      linear-gradient(to right, var(--gray-200) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--gray-200) 1px, transparent 1px);
+      linear-gradient(to right, var(--border-strong) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border-strong) 1px, transparent 1px);
     background-size: 40px 40px;
-  }
-
-  .dark .bg-grid-pattern {
-    background-image:
-      linear-gradient(to right, var(--gray-800) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--gray-800) 1px, transparent 1px);
   }
 
   /* Animations */
@@ -891,8 +885,8 @@
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1.4;
-    color: white;
-    background-color: var(--gray-900);
+    color: var(--on-invert);
+    background-color: var(--surface-invert);
     border-radius: 0.375rem;
     box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
     white-space: nowrap;
@@ -909,8 +903,8 @@
   }
 
   .dark .tooltip-bubble {
-    background-color: var(--gray-100);
-    color: var(--gray-900);
+    background-color: var(--on-invert);
+    color: var(--surface-invert);
   }
 
   /* Position: Top (default) */

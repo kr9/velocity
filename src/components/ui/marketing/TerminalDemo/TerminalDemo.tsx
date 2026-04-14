@@ -164,27 +164,27 @@ export function TerminalDemo() {
       case 'intro':
         return 'text-cyan-400 font-bold';
       case 'prompt-label':
-        return 'text-gray-300';
+        return 'text-on-invert-muted';
       case 'prompt-input':
         return 'text-on-invert';
       case 'prompt-hint':
-        return 'text-gray-300';
+        return 'text-on-invert-muted';
       case 'select-label':
-        return 'text-gray-300';
+        return 'text-on-invert-muted';
       case 'select-option':
-        return 'text-gray-300';
+        return 'text-on-invert-muted';
       case 'select-option-active':
         return 'text-cyan-400';
       case 'select-hint':
-        return 'text-gray-300';
+        return 'text-on-invert-muted';
       case 'spinner':
         return 'text-cyan-400 animate-pulse';
       case 'success':
         return 'text-green-400';
       case 'note-header':
-        return 'text-gray-300';
+        return 'text-on-invert-muted';
       case 'note-content':
-        return 'text-gray-300';
+        return 'text-on-invert-muted';
       case 'outro':
         return 'text-green-400 font-bold';
       default:
