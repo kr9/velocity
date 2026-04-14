@@ -1,0 +1,12 @@
+# WordPress → Velocity blog redirects
+# Format: /year/month/slug/ /blog/slug/ 301
+
+/2017/08/next-universal-civil-war-will-be-for-data-freedom/ /blog/next-universal-civil-war-will-be-for-data-freedom/ 301
+/2017/09/where-is-apple-innovation/ /blog/where-is-apple-innovation/ 301
+/2017/10/why-keeping-track-of-our-successes-is-more-important-than-anything-else/ /blog/why-keeping-track-of-our-successes-is-more-important-than-anything-else/ 301
+/2017/12/the-ultimate-2-hour-networking-setup-that-protects-your-privacy/ /blog/the-ultimate-2-hour-networking-setup-that-protects-your-privacy/ 301
+/2018/04/9-ways-to-keep-employees-motivated-besides-money/ /blog/9-ways-to-keep-employees-motivated-besides-money/ 301
+/2018/05/happy-employees-work-better-part-1-what-it-means-for-organizational-productivity/ /blog/happy-employees-work-better-part-1-what-it-means-for-organizational-productivity/ 301
+/2019/01/happy-employees-work-better-part-2-what-it-means-for-your-growth/ /blog/happy-employees-work-better-part-2-what-it-means-for-your-growth/ 301
+/2020/08/how-to-find-an-authentic-yoga-teacher-training-institute-in-india/ /blog/how-to-find-an-authentic-yoga-teacher-training-institute-in-india/ 301
+/2020/09/simplifying-mysteries-and-benefits-of-yogic-breathing/ /blog/simplifying-mysteries-and-benefits-of-yogic-breathing/ 301
