@@ -1,4 +1,6 @@
-# Cloudflare Pages configuration
+# Cloudflare Workers — static assets deployment
 name = "velocity"
 compatibility_date = "2026-01-31"
-pages_build_output_dir = "./dist"
+
+[assets]
+directory = "./dist"
