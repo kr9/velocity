@@ -56,6 +56,9 @@
   --color-warning: var(--warning);
   --color-error: var(--error);
 
+  /* Code background — exposes var(--code-bg) as the bg-code-bg utility */
+  --color-code-bg: var(--code-bg);
+
   /* Inverted/Contrast Sections */
   --color-surface-invert: var(--surface-invert);
   --color-surface-invert-secondary: var(--surface-invert-secondary);

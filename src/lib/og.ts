@@ -37,25 +37,35 @@ export async function generateOGImage(options: OGImageOptions): Promise<Buffer> 
   // Create the OG image markup using satori-html
   // Note: All divs must have explicit display property for Satori
   // HTML elements must be in the template literal, not interpolated as strings
+  // Palette mirrors the blog design system (purple accent on deep slate).
+  const BG = '#121212';
+  const SURFACE = '#1E1E1E';
+  const FG = '#F2F2F2';
+  const FG_SECONDARY = '#8E8E93';
+  const ACCENT = '#B87AB8';
+  const ACCENT_SOFT = 'rgba(184, 122, 184, 0.12)';
+  const ACCENT_BORDER = 'rgba(184, 122, 184, 0.30)';
+  const initial = (siteConfig.author?.[0] || siteConfig.name?.[0] || 'B').toUpperCase();
+
   const markup = html`
-    <div style="height: 100%; width: 100%; display: flex; flex-direction: column; background: linear-gradient(135deg, #18181b 0%, #27272a 50%, #18181b 100%); padding: 60px 80px; font-family: 'Inter'; position: relative;">
-      <div style="display: flex; position: absolute; top: 0; left: 0; width: 8px; height: 100%; background: linear-gradient(180deg, #f97316 0%, #fb923c 50%, #f97316 100%);"></div>
+    <div style="height: 100%; width: 100%; display: flex; flex-direction: column; background: ${BG}; padding: 60px 80px; font-family: 'Inter'; position: relative;">
+      <div style="display: flex; position: absolute; top: 0; left: 0; width: 8px; height: 100%; background: ${ACCENT};"></div>
       <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; padding-left: 20px;">
         <div style="display: flex; align-items: center;">
-          <div style="display: flex; padding: 8px 16px; background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.3); border-radius: 9999px; color: #fb923c; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;">${type === 'article' ? 'Article' : 'Page'}</div>
+          <div style="display: flex; padding: 8px 16px; background: ${ACCENT_SOFT}; border: 1px solid ${ACCENT_BORDER}; border-radius: 9999px; color: ${ACCENT}; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;">${type === 'article' ? 'Article' : 'Page'}</div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 24px;">
-          <div style="display: flex; font-size: ${title.length > 50 ? '48px' : '64px'}; font-weight: 700; color: #fafafa; line-height: 1.2; letter-spacing: -0.02em;">${title}</div>
-          <div style="display: ${truncatedDescription ? 'flex' : 'none'}; font-size: 24px; color: #a1a1aa; line-height: 1.5; max-width: 800px;">${truncatedDescription}</div>
+          <div style="display: flex; font-size: ${title.length > 50 ? '48px' : '64px'}; font-weight: 700; color: ${FG}; line-height: 1.2; letter-spacing: -0.02em;">${title}</div>
+          <div style="display: ${truncatedDescription ? 'flex' : 'none'}; font-size: 24px; color: ${FG_SECONDARY}; line-height: 1.5; max-width: 800px;">${truncatedDescription}</div>
         </div>
         <div style="display: flex; align-items: center; justify-content: space-between;">
           <div style="display: flex; align-items: center; gap: 12px;">
-            <div style="display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: linear-gradient(135deg, #f97316 0%, #fb923c 100%); border-radius: 12px;">
-              <span style="font-size: 24px; font-weight: 700; color: #18181b;">V</span>
+            <div style="display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: ${ACCENT}; border-radius: 12px;">
+              <span style="font-size: 24px; font-weight: 700; color: ${SURFACE};">${initial}</span>
             </div>
-            <span style="font-size: 20px; font-weight: 600; color: #fafafa;">${siteConfig.name}</span>
+            <span style="font-size: 20px; font-weight: 600; color: ${FG};">${siteConfig.name}</span>
           </div>
-          <span style="font-size: 16px; color: #71717a;">${new URL(siteConfig.url).hostname}</span>
+          <span style="font-size: 16px; color: ${FG_SECONDARY};">${new URL(siteConfig.url).hostname}</span>
         </div>
       </div>
     </div>

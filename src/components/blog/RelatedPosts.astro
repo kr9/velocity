@@ -5,15 +5,14 @@ import { getCollection } from 'astro:content';
 interface Props {
   currentSlug: string;
   tags: string[];
-  locale?: string;
   maxPosts?: number;
 }
 
-const { currentSlug, tags, locale = 'en', maxPosts = 3 } = Astro.props;
+const { currentSlug, tags, maxPosts = 3 } = Astro.props;
 
-// Get all published posts in the same locale
+// Get all published posts
 const allPosts = await getCollection('blog', ({ data }) => {
-  return data.locale === locale && (import.meta.env.PROD ? data.draft !== true : true);
+  return import.meta.env.PROD ? data.draft !== true : true;
 });
 
 // Filter to find posts with matching tags
@@ -36,11 +35,7 @@ const relatedPosts = allPosts
   })
   .slice(0, maxPosts);
 
-// Generate URLs for each post (remove locale prefix from id)
-const getPostUrl = (postId: string) => {
-  const slug = postId.replace(`${locale}/`, '');
-  return `/blog/${slug}`;
-};
+const getPostUrl = (postId: string) => `/blog/${postId}`;
 ---
 
 {relatedPosts.length > 0 && (

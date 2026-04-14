@@ -132,7 +132,7 @@ const fullUrl = new URL(Astro.url.pathname, Astro.site).toString();
   {
     tags.length > 0 && (
       <div class="mx-auto max-w-6xl px-6 pb-16">
-        <RelatedPosts currentSlug={slug} tags={tags} locale="en" maxPosts={3} />
+        <RelatedPosts currentSlug={slug} tags={tags} maxPosts={3} />
       </div>
     )
   }
